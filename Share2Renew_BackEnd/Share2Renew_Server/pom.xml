@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块: Share2Renew_BackEnd 定义了SpringBoot的版本 -->
+    <parent>
+        <artifactId>Share2Renew_BackEnd</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <groupId>com.Share2Renew</groupId>
+    </parent>
+
+    <groupId>com.Share2Renew</groupId>
+    <artifactId>Share2Renew_Server</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Share2Renew_Server</name>
+    <description>Share2Renew_Server</description>
+    <!-- 打包类型jar -->
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <!-- SpringBoot Web启动器 -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- LomBok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- mysql连接 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- druid数据源 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
+        <!-- MyBatis-Plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
