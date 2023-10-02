@@ -87,4 +87,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         //查出来了还可以继续做其他判断
         return userMapper.selectOne(new QueryWrapper<User>().eq("username", username).eq("validity", true));
     }
+
+    /**
+     * For the user register
+     * @param user
+     * @return
+     */
+    @Override
+    public GeneralBean register(User user) {
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<User> username = queryWrapper.eq("username", user.getUsername());
+        User result = userMapper.selectOne(username);
+
+        //首先判断username是否唯一
+        if ( result == null && user.getUsername() != null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setValidity(true);
+            user.setRightToComment(1);
+
+            userMapper.insert(user);
+            return GeneralBean.success("Register successfully");
+        } else if (user.getUsername() == null) {
+            return GeneralBean.error("Please input username first.");
+        } else {
+            return GeneralBean.error("Username has been used, please try another one.");
+        }
+    }
 }

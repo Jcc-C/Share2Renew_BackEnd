@@ -27,7 +27,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                 .apis(RequestHandlerSelectors.basePackage("com.cjx.share2renew.controller"))
+                 .apis(RequestHandlerSelectors.basePackage("com.share2renew.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securityContexts(securityContexts())
@@ -38,7 +38,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("API doc of Share2Renew")
                 .description("API doc of Share2Renew")
-                .contact(new Contact("Junxian" , "http:localhost:8090/doc.html" , "jcai6116@uni.sydney.edu.au"))
+                .contact(new Contact("Junxian" , "/doc.html" , "jcai6116@uni.sydney.edu.au"))
                 .version("1.0")
                 .build();
     }
