@@ -1,4 +1,4 @@
-package com.share2renew.share2renew_server.server.controller;
+package com.share2renew.controller;
 
 /**
  * @program: Share2Renew_BackEnd

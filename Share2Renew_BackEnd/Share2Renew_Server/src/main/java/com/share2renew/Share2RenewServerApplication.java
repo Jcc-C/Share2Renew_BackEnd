@@ -1,5 +1,6 @@
-package com.share2renew.share2renew_server.server;
+package com.share2renew;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@MapperScan("com.share2renew.mapper")
 public class Share2RenewServerApplication {
 
     public static void main(String[] args) {

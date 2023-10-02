@@ -1,4 +1,4 @@
-package com.share2renew.share2renew_server.server.service;
+package com.share2renew.service;
 
 /**
  * 这个接口没用的, 仅做测试

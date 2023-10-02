@@ -1,4 +1,4 @@
-package com.share2renew.share2renew_server.server.service.Impl;
+package com.share2renew.service.Impl;
 
 /**
  * @program: Share2Renew_BackEnd
