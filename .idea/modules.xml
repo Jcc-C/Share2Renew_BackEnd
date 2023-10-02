@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_BackEnd.iml" filepath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_BackEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/Share2Renew_Generator.iml" filepath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/Share2Renew_Generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/Share2Renew_Server.iml" filepath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/Share2Renew_Server.iml" />
+    </modules>
+  </component>
+</project>
