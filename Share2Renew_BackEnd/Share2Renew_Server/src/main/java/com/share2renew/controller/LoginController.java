@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,9 +48,10 @@ public class LoginController {
         return GeneralBean.success("Logout successfully");
     }
 
-    @ApiOperation(value = "Get the user info")
+    @ApiOperation(value = "Get the current user info")
     @GetMapping("/user/info")
     public User getCurrentUserInfo(Principal principal) {
+        //如果是空证明spring security里面没有这个用户
         if (null == principal) {
             return null;
         }
@@ -60,6 +62,15 @@ public class LoginController {
         return user;
     }
 
+    /**
+     * For the user register
+     * @param user
+     * @return
+     */
+    @PostMapping("/register")
+    public GeneralBean register(@RequestBody User user) {
+        return userService.register(user);
+    }
 
 
 

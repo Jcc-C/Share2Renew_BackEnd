@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author Junxian Cai
- * @since 2023-09-07
+ * @since 2023-10-02
  */
 @RestController
 @RequestMapping("/user")

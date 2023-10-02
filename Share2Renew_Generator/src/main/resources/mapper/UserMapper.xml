@@ -5,15 +5,20 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.share2renew.pojo.User">
         <id column="user_id" property="userId" />
+        <result column="real_name" property="realName" />
         <result column="username" property="username" />
         <result column="password" property="password" />
-        <result column="right_to_commet" property="rightToCommet" />
+        <result column="right_to_comment" property="rightToComment" />
+        <result column="mobile" property="mobile" />
+        <result column="gender" property="gender" />
+        <result column="email" property="email" />
+        <result column="location" property="location" />
         <result column="validity" property="validity" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id, username, password, right_to_commet, validity
+        user_id, real_name, username, password, right_to_comment, mobile, gender, email, location, validity
     </sql>
 
 </mapper>

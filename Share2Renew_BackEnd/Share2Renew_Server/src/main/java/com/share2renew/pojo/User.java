@@ -1,16 +1,16 @@
 package com.share2renew.pojo;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.util.Collection;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.springframework.boot.ansi.AnsiOutput;
 import org.springframework.security.core.GrantedAuthority;
@@ -33,26 +33,40 @@ public class User implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "userId")
-    @TableId("user_id")
+    @ApiModelProperty(value = "id")
+    @TableId(value = "user_id", type = IdType.AUTO)
     private Integer userId;
 
+    @ApiModelProperty(value = "users’ real name")
+    @TableField("real_name")
+    private String realName;
+
     @ApiModelProperty(value = "username")
-    @TableField("username")
     private String username;
 
     @ApiModelProperty(value = "password")
-    @TableField("password")
     private String password;
 
-    @ApiModelProperty(value = "right_to_comment")
+    @ApiModelProperty(value = "Can this user make a comment or not")
     @TableField("right_to_comment")
     private Integer rightToComment;
 
-    @ApiModelProperty(value = "Is valid or not")
-    @TableLogic //Logic delete -> 0: Active / 1: Deleted
-    private Boolean validity;
+    @ApiModelProperty(value = "mobile phone number")
+    private String mobile;
 
+    @ApiModelProperty(value = "gender")
+    private String gender;
+
+    @ApiModelProperty(value = "email address")
+    private String email;
+
+    @ApiModelProperty(value = "users' location")
+    private String location;
+
+    @ApiModelProperty(value = "Is valid or not")
+    @Getter(AccessLevel.NONE)
+    //@TableLogic //Logic delete -> 0: Active / 1: Deleted
+    private Boolean validity;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

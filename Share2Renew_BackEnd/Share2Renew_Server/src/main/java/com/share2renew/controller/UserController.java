@@ -1,6 +1,9 @@
 package com.share2renew.controller;
 
 
+import com.share2renew.pojo.GeneralBean;
+import com.share2renew.pojo.User;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -16,5 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
 
 }
