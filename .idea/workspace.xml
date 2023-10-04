@@ -4,27 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ef35d75-6c65-4bd0-aa44-2d2cad884149" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/src/main/java/com/Share2Renew/generator/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/Share2RenewServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/Share2RenewServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/service/Impl/testServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/testServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/service/testService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/testService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/config/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/share2renew_server/server/Share2RenewServerApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/share2renew_server/server/controller/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/share2renew_server/server/service/Impl/testServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/share2renew_server/server/service/testService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/config/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/pom.xml" afterDir="false" />
+    <list default="true" id="1ef35d75-6c65-4bd0-aa44-2d2cad884149" name="Changes" comment="设置自定义过滤器，完成登陆和注册功能">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/mapper/UserinfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/mapper/UserinfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/pojo/Userinfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/pojo/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/IUserinfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/IUserinfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserinfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserinfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper/UserinfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper/UserinfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/mapper/UserinfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/mapper/UserinfoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/pojo/Userinfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/pojo/Userinfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/IUserinfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/IUserinfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserinfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserinfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/mapper/UserinfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/mapper/UserinfoMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -34,6 +40,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="jimmy" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -56,27 +75,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/jimmycai/编程/IDEA项目/USYD/Share2Renew_BackEnd/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "28b3da1377bca8f2117108ee28e85426",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jimmycai/编程/IDEA项目/USYD/Share2Renew_BackEnd/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;fc949754acf70c150707fc9546321b0b&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper" />
@@ -119,19 +139,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Share2Renew_BackEnd" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Share2Renew_BackEnd" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Share2RenewServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="Share2Renew_Server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.share2renew.Share2RenewServerApplication" />
@@ -150,6 +157,8 @@
         <item itemvalue="Spring Boot.Share2RenewServerApplication" />
         <item itemvalue="Application.com.share2renew.CodeGenerator" />
         <item itemvalue="Application.CodeGenerator" />
+        <item itemvalue="Spring Boot.Share2RenewServerApplication" />
+        <item itemvalue="Application.com.share2renew.CodeGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -167,6 +176,8 @@
       <workItem from="1694076374812" duration="1617000" />
       <workItem from="1694078004487" duration="15000" />
       <workItem from="1696156128345" duration="10457000" />
+      <workItem from="1696378118495" duration="66000" />
+      <workItem from="1696378204675" duration="104000" />
     </task>
     <servers />
   </component>
@@ -178,10 +189,53 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="jimmy" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/config/security/JwtTokenUtil.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/config/security/JwtTokenUtil.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserServiceImpl.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/config/security/JwtTokenUtil.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/config/security/filter/JwtAuthenticationTokenFilter.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

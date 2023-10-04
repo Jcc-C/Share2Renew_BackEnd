@@ -31,4 +31,11 @@ public interface IUserService extends IService<User> {
      * @return
      */
     User getUserByUserName(String username);
+
+    /**
+     * For the user register
+     * @param user
+     * @return
+     */
+    GeneralBean register(User user);
 }

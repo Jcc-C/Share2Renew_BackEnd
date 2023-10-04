@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -15,6 +16,8 @@ import java.util.Map;
  * @description: For token
  * @author: Junxian Cai
  **/
+
+@Component
 public class JwtTokenUtil {
 
     private static final String CLAIM_KEY_USERNAME = "sub";
