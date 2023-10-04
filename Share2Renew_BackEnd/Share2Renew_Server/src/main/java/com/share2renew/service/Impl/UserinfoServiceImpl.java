@@ -1,6 +1,6 @@
 package com.share2renew.service.Impl;
 
-import com.share2renew.pojo.Userinfo;
+import com.share2renew.pojo.UserInfo;
 import com.share2renew.mapper.UserinfoMapper;
 import com.share2renew.service.IUserinfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2023-09-07
  */
 @Service
-public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, Userinfo> implements IUserinfoService {
+public class UserinfoServiceImpl extends ServiceImpl<UserinfoMapper, UserInfo> implements IUserinfoService {
 
 }

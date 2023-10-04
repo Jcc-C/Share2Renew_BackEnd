@@ -3,7 +3,6 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/pom.xml" />
         <option value="$PROJECT_DIR$/Share2Renew_BackEnd/pom.xml" />
       </list>
     </option>

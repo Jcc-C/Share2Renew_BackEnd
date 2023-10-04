@@ -1,6 +1,6 @@
 package com.share2renew.service;
 
-import com.share2renew.pojo.Userinfo;
+import com.share2renew.pojo.UserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Junxian Cai
  * @since 2023-09-07
  */
-public interface IUserinfoService extends IService<Userinfo> {
+public interface IUserinfoService extends IService<UserInfo> {
 
 }

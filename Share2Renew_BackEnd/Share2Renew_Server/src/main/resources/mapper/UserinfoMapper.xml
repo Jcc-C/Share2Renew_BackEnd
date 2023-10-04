@@ -3,7 +3,7 @@
 <mapper namespace="com.share2renew.mapper.UserinfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.share2renew.pojo.Userinfo">
+    <resultMap id="BaseResultMap" type="com.share2renew.pojo.UserInfo">
         <id column="userinfo_id" property="userinfoId" />
         <result column="user_id" property="userId" />
         <result column="profile_picture" property="profilePicture" />
