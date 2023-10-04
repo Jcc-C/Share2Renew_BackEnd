@@ -31,7 +31,7 @@ public class LoginController {
     @Autowired
     private IUserService userService;
 
-    @ApiOperation(value = "Return token after login")
+    @ApiOperation(value = "Login then return token")
     @PostMapping("/login")
     public GeneralBean login(UserLoginInfo userLoginInfo, HttpServletRequest request) {
         return userService.login(userLoginInfo.getUsername(), userLoginInfo.getPassword(), request);
@@ -67,6 +67,7 @@ public class LoginController {
      * @param user
      * @return
      */
+    @ApiOperation("Register")
     @PostMapping("/register")
     public GeneralBean register(@RequestBody User user) {
         return userService.register(user);
