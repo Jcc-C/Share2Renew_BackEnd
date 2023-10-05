@@ -44,6 +44,7 @@ public class GeneralBean implements Serializable{
         public static GeneralBean success(Object obj){
             return success("Successful data retrieval from Back-End" , obj);
         }
+
         /**
          * 失败返回结果
          * @param message
@@ -64,4 +65,6 @@ public class GeneralBean implements Serializable{
         }
 
 
-    }
+
+
+}
