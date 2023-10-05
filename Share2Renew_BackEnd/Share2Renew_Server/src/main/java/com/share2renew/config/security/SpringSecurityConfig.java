@@ -101,6 +101,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-ui.html",
                 "/swagger-resources/**",
                 "/v2/api-docs/**"
+                //"/post/**"
         );
     }
 

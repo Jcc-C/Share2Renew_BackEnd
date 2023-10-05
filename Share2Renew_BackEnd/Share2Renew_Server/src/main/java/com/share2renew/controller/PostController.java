@@ -41,11 +41,12 @@ public class PostController {
 
     /**
      *
-     * @param pageNo 显示第几页
-     * @param pageSize 每页显示多少条
-     * @return data
+     * @param pageNo 第几页
+     * @param pageSize 一页显示几个
+     * @param title 需要搜索的帖子title 为空则显示所有
+     * @return
      */
-    @PostMapping("/show_all")
+    @PostMapping("/show all")
     @ApiOperation(value = "show all the posts")
     public GeneralBean GetAllThePost(@RequestParam(value = "pageNo") Long pageNo,
                                      @RequestParam(value = "pageSize") Long pageSize,
