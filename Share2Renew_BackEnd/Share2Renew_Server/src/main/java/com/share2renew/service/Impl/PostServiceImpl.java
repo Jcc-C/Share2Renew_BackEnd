@@ -28,6 +28,13 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Autowired
     private IPostService postService;
 
+    /**
+     *
+     * @param pageNo 第几页
+     * @param pageSize 一页显示几个
+     * @param title 需要搜索的帖子title 为空则显示所有
+     * @return
+     */
     @Override
     public GeneralBean showAllPosts(Long pageNo, Long pageSize, String title) {
         LambdaQueryWrapper<Post> wrapper = new LambdaQueryWrapper<>();
