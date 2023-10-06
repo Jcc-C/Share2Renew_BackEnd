@@ -1,5 +1,6 @@
 package com.share2renew.service;
 
+import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.Post;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IPostService extends IService<Post> {
 
+    GeneralBean showAllPosts(Long pageNo, Long pageSize, String title);
 }

@@ -52,15 +52,6 @@ public class PostController {
                                      @RequestParam(value = "pageSize") Long pageSize,
                                      @RequestParam(value = "title", required = false) String title){
 
-        LambdaQueryWrapper<Post> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(StringUtils.hasLength(title), Post::getPostTitle,title); //条件查询
-
-        Page<Post> page = new Page<>(pageNo, pageSize);
-        postService.page(page,wrapper);
-
-        Map<String, Object> data = new HashMap<>();
-        data.put("total", page.getTotal());//查询的总数
-        data.put("rows",page.getRecords());//查询的数据
-        return GeneralBean.success(data);
+        return postService.showAllPosts(pageNo, pageSize, title);
     }
 }
