@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.encrypt.BytesEncryptor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -113,5 +115,33 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         } else {
             return GeneralBean.error("Username has been used, please try another one.");
         }
+    }
+
+    /**
+     * For user update password
+     * @param userInfo
+     * @return
+     */
+    @Override
+    public GeneralBean updatePassword(Map<String, Object> userInfo) {
+        // Access user information including password and userId
+        String previousPass = (String) userInfo.get("previousPass");
+        String newPass = (String) userInfo.get("newPass");
+        Integer userId = (Integer) userInfo.get("userId");
+
+        // Get user information by user id
+        User user = userMapper.selectById(userId);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+        if (bCryptPasswordEncoder.matches(previousPass, user.getPassword())) {
+            // Set user new password
+            user.setPassword(bCryptPasswordEncoder.encode(newPass));
+            // Update the user information to the database
+            int result = userMapper.updateById(user);
+            if (result == 1) {
+                return GeneralBean.success("Password update successfully.");
+            }
+        }
+        return GeneralBean.error("Password update failed, please try again.");
     }
 }

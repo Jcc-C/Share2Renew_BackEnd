@@ -5,6 +5,7 @@ import com.share2renew.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * <p>
@@ -38,4 +39,11 @@ public interface IUserService extends IService<User> {
      * @return
      */
     GeneralBean register(User user);
+
+    /**
+     * For user update password
+     * @param userInfo
+     * @return
+     */
+    GeneralBean updatePassword(Map<String, Object> userInfo);
 }
