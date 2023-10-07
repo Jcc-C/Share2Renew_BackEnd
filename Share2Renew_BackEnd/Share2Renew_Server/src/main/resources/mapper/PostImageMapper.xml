@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.share2renew.mapper.PostImageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.share2renew.pojo.PostImage">
+        <id column="post_image_id" property="postImageId" />
+        <result column="post_id" property="postId" />
+        <result column="image_url" property="imageUrl" />
+        <result column="image_type" property="imageType" />
+        <result column="validity" property="validity" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        post_image_id, post_id, image_url, image_type, validity
+    </sql>
+
+</mapper>
