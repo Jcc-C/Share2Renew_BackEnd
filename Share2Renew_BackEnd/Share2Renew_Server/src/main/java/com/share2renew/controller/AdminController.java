@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author Junxian Cai
- * @since 2023-09-07
+ * @since 2023-10-07
  */
 @RestController
-@RequestMapping("/userinfo")
-public class UserinfoController {
-
+@RequestMapping("/admin")
+public class AdminController {
 
 }
