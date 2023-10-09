@@ -7,6 +7,7 @@ import org.springframework.web.filter.CorsFilter;
 /**
  * 跨域处理的配置文件 kevin
  */
+
 public class CorsConfig {
     public CorsFilter corsFilter(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
