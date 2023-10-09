@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ef35d75-6c65-4bd0-aa44-2d2cad884149" name="Changes" comment="设置自定义过滤器，完成登陆和注册功能">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1ef35d75-6c65-4bd0-aa44-2d2cad884149" name="Changes" comment="修改了SpringSecurity文件，跨域问题">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Generator/target/classes/com/share2renew/CodeGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/mapper/UserinfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/mapper/UserinfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/pojo/Userinfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/pojo/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/IUserinfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/IUserinfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserinfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserinfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper/UserinfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper/UserinfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/mapper/UserinfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/mapper/UserinfoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/pojo/Userinfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/pojo/Userinfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/IUserinfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/IUserinfoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserinfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/com/share2renew/service/Impl/UserinfoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/mapper/UserinfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/target/classes/mapper/UserinfoMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +43,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.3.12/spring-core-5.3.12.jar!/org/springframework/cglib/proxy/MethodProxy.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -89,10 +75,10 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;fc949754acf70c150707fc9546321b0b&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -100,10 +86,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/resources/mapper" />
-      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/service/Impl" />
-      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/service" />
-      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/pojo" />
-      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/share2renew_server/server/mapper" />
+      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl" />
+      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service" />
+      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/mapper" />
+      <recent name="$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.share2renew.config.security" />
@@ -178,7 +164,44 @@
       <workItem from="1696156128345" duration="10457000" />
       <workItem from="1696378118495" duration="66000" />
       <workItem from="1696378204675" duration="104000" />
+      <workItem from="1696379520454" duration="808000" />
+      <workItem from="1696424208140" duration="3028000" />
+      <workItem from="1696495148617" duration="5353000" />
+      <workItem from="1696675732153" duration="24000" />
+      <workItem from="1696675759987" duration="12000" />
+      <workItem from="1696675923096" duration="2066000" />
+      <workItem from="1696817897705" duration="8328000" />
+      <workItem from="1696849466475" duration="1943000" />
     </task>
+    <task id="LOCAL-00001" summary="完成更新密码操作">
+      <created>1696427172191</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696427172191</updated>
+    </task>
+    <task id="LOCAL-00002" summary="完成更新密码操作">
+      <created>1696677570819</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696677570819</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加Admin和PostImage相关文件">
+      <created>1696677701430</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696677701430</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改了SpringSecurity文件，跨域问题">
+      <created>1696851795929</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696851795929</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +218,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="jimmy" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -206,6 +229,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成更新密码操作" />
+    <MESSAGE value="添加Admin和PostImage相关文件" />
+    <MESSAGE value="修改了SpringSecurity文件，跨域问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了SpringSecurity文件，跨域问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -222,7 +251,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserServiceImpl.java</url>
-          <line>71</line>
+          <line>73</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -234,6 +263,11 @@
           <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/config/security/filter/JwtAuthenticationTokenFilter.java</url>
           <line>59</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Share2Renew_BackEnd/Share2Renew_Server/src/main/java/com/share2renew/service/Impl/UserServiceImpl.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
