@@ -1,5 +1,6 @@
 package com.share2renew.service;
 
+import com.share2renew.exception.ParamsException;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -24,26 +25,34 @@ public interface IUserService extends IService<User> {
      * @param request
      * @return
      */
-    GeneralBean login(String username, String password, HttpServletRequest request);
+    public GeneralBean login(String username, String password, HttpServletRequest request);
 
     /**
      * Get the user info by username
      * @param username
      * @return
      */
-    User getUserByUserName(String username);
+    public User getUserByUserName(String username);
 
     /**
      * For the user register
      * @param user
      * @return
      */
-    GeneralBean register(User user);
+    public GeneralBean register(User user);
 
     /**
      * For user update password
      * @param userInfo
      * @return
      */
-    GeneralBean updatePassword(Map<String, Object> userInfo);
+    public GeneralBean updatePassword(Map<String, Object> userInfo);
+
+    /**
+     * Get current userId
+     * @return
+     */
+    public int getCurrentUserId() throws ParamsException;
+
+
 }
