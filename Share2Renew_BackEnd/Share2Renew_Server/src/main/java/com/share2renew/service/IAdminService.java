@@ -37,19 +37,19 @@ public interface IAdminService extends IService<Admin> {
      *  modify post validity by post id
      * @param postId
      */
-    void modifyPostValidity(String postId);
+    void modifyPostValidity(int postId, int validity);
 
     /**
      * modify user validity by user id
      * @param userId
      */
-    void modifyUserValidity(String userId);
+    void modifyUserValidity(int userId, boolean validity);
 
     /**
      * modify user comment right by user id
      * @param userId
      */
-    void modifyUserCommentRight(String userId);
+    void modifyUserCommentRight(int userId, int commentRight);
 
 
 
