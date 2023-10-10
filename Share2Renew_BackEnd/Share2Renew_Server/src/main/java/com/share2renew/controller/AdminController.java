@@ -37,5 +37,19 @@ public class AdminController {
         return adminService.getAllPosts();
     }
 
+    public void modifyUserValidity(String userId) {
+
+    }
+
+    public void modifyPostValidity(String postId) {
+
+    }
+
+    public void modifyUserCommentRight(String userId) {
+
+    }
+
+
+
 
 }
