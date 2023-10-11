@@ -31,7 +31,7 @@ public class LoginController {
 
     @ApiOperation(value = "Login then return token")
     @PostMapping("/login")
-    public GeneralBean login(UserLoginInfo userLoginInfo, HttpServletRequest request) {
+    public GeneralBean login(@RequestBody UserLoginInfo userLoginInfo, HttpServletRequest request) {
         return userService.login(userLoginInfo.getUsername(), userLoginInfo.getPassword(), request);
     }
 
