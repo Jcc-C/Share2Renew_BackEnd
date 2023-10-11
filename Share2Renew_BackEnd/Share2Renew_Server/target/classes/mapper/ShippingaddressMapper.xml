@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.share2renew.mapper.ShippingaddressMapper">
+<mapper namespace="com.share2renew.mapper.ShippingAddressMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.share2renew.pojo.Shippingaddress">
+    <resultMap id="BaseResultMap" type="com.share2renew.pojo.ShippingAddress">
         <id column="shippingaddress_id" property="shippingaddressId" />
         <result column="user_id" property="userId" />
         <result column="postcode" property="postcode" />

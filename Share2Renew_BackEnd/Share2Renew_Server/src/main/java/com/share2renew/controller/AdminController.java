@@ -29,23 +29,11 @@ public class AdminController {
     private IAdminService adminService;
 
     @ApiOperation(value = "admin login")
-    @PostMapping("adminLogin")
+    @PostMapping("/adminLogin")
     public Admin adminLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
 
         return adminService.adminLogin(username,password);
 
-    }
-
-    @ApiOperation(value = "get all users info")
-    @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return adminService.getAllUsers();
-    }
-
-    @ApiOperation(value = "get all posts info")
-    @GetMapping("/posts")
-    public List<Post> getAllPosts() {
-        return adminService.getAllPosts();
     }
 
     @ApiOperation(value = "modify user validity")
