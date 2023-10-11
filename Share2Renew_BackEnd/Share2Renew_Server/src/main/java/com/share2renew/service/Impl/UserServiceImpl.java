@@ -2,6 +2,7 @@ package com.share2renew.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.share2renew.config.security.JwtTokenUtil;
+import com.share2renew.exception.ParamsException;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.share2renew.mapper.UserMapper;
@@ -10,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -143,5 +145,39 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             }
         }
         return GeneralBean.error("Password update failed, please try again.");
+    }
+
+    /**
+     * Get the current user
+     * @return
+     */
+    @Override
+    public int getCurrentUserId() throws ParamsException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() != null) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                String username = ((UserDetails) principal).getUsername();
+                User user = getUserByUserName(username);
+                if (user != null) {
+                    return user.getUserId();
+                }
+            }
+        }
+        throw new ParamsException();
+    }
+
+    /**
+     * update User information
+     * @param user
+     * @return
+     */
+    @Override
+    public GeneralBean updateUser(User user) {
+        int result = userMapper.updateById(user);
+        if (result == 1) {
+            return GeneralBean.success("Update user information successfully");
+        }
+        return GeneralBean.error("Update user information failed");
     }
 }

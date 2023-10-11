@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.jws.soap.SOAPBinding;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +30,7 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+    //test
 
     /**
      * For user update password
@@ -40,5 +43,20 @@ public class UserController {
     public GeneralBean updatePassword(@RequestBody Map<String, Object> userInfo) {
         return userService.updatePassword(userInfo);
     }
+
+    //Todo: 得拿到当前的userId才可以去修改
+    @PostMapping("/updateUser")
+    @ApiOperation(value = "updateUser")
+    public GeneralBean updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+    @ApiOperation(value = "getALlUser")
+    @PostMapping("/getAllUser")
+    public List<User> getALlUser() {
+        return userService.list();
+    }
+
+
 
 }
