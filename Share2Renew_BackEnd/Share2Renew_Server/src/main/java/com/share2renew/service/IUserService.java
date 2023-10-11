@@ -55,4 +55,10 @@ public interface IUserService extends IService<User> {
     public int getCurrentUserId() throws ParamsException;
 
 
+    /**
+     * Update user information
+     * @param user
+     * @return
+     */
+    public GeneralBean updateUser(User user);
 }

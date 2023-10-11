@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Map;
 
 /**
@@ -40,5 +41,12 @@ public class UserController {
     public GeneralBean updatePassword(@RequestBody Map<String, Object> userInfo) {
         return userService.updatePassword(userInfo);
     }
+
+    @PostMapping("/updateUser")
+    public GeneralBean updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+
 
 }

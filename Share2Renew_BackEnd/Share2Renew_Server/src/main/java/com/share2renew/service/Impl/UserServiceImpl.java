@@ -166,4 +166,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
         throw new ParamsException();
     }
+
+    /**
+     * update User information
+     * @param user
+     * @return
+     */
+    @Override
+    public GeneralBean updateUser(User user) {
+        int result = userMapper.updateById(user);
+        if (result == 1) {
+            return GeneralBean.success("Update user information successfully");
+        }
+        return GeneralBean.error("Update user information failed");
+    }
 }

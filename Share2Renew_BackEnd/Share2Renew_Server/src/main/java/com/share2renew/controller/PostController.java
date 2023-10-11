@@ -11,13 +11,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,12 +43,19 @@ public class PostController {
      * @param title 需要搜索的帖子title 为空则显示所有
      * @return
      */
-    @PostMapping("/show all")
-    @ApiOperation(value = "show all the posts")
+    @PostMapping("/geyAllPostByPage")
+    @ApiOperation(value = "geyAllPostByPage")
     public GeneralBean GetAllThePost(@RequestParam(value = "pageNo") Long pageNo,
                                      @RequestParam(value = "pageSize") Long pageSize,
                                      @RequestParam(value = "title", required = false) String title){
 
         return postService.showAllPosts(pageNo, pageSize, title);
     }
+
+    @GetMapping("/getAllPost")
+    @ApiOperation(value = "getAllPost")
+    public List<Post> getAllPost() {
+        return postService.list();
+    }
+
 }
