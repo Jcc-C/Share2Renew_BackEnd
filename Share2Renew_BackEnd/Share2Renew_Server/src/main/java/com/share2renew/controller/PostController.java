@@ -43,8 +43,8 @@ public class PostController {
      * @param title 需要搜索的帖子title 为空则显示所有
      * @return
      */
-    @PostMapping("/geyAllPostByPage")
-    @ApiOperation(value = "geyAllPostByPage")
+    @PostMapping("/getAllPostByPage")
+    @ApiOperation(value = "getAllPostByPage")
     public GeneralBean GetAllThePost(@RequestParam(value = "pageNo") Long pageNo,
                                      @RequestParam(value = "pageSize") Long pageSize,
                                      @RequestParam(value = "title", required = false) String title){
