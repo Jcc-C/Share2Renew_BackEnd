@@ -44,7 +44,7 @@ public class UserController {
         return userService.updatePassword(userInfo);
     }
 
-    //Todo: 得拿到当前的userId才可以去修改
+    //Todo: (目前有错)应该是和spring security的相关配置有关 -> 看AdminInfoController - updateAdmin
     @PostMapping("/updateUser")
     @ApiOperation(value = "updateUser")
     public GeneralBean updateUser(@RequestBody User user) {
@@ -56,6 +56,13 @@ public class UserController {
     public List<User> getALlUser() {
         return userService.list();
     }
+
+    //TODO: 更新头像
+//    @ApiOperation(value = "Update user avatar")
+//    @PostMapping("/updateAvatar")
+//    public GeneralBean updateUserAvatar() {
+//
+//    }
 
 
 
