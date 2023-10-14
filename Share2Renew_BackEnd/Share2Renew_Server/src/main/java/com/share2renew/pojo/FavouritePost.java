@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,14 +21,14 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_favouritepost")
-@ApiModel(value="Favouritepost对象", description="")
-public class Favouritepost implements Serializable {
+@TableName("t_favouritePost")
+@ApiModel(value="FavouritePost对象", description="")
+public class FavouritePost implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "favouritepost_id", type = IdType.AUTO)
-    private Integer favouritepostId;
+    @TableId(value = "favourite_post_id", type = IdType.AUTO)
+    private Integer favouritePostId;
 
     @TableField("post_id")
     private Integer postId;
