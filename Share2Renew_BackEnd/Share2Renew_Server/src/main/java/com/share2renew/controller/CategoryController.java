@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -28,7 +29,9 @@ public class CategoryController {
     //TODO: 做一个可以搜索的
     @ApiOperation(value = "get all the category")
     @GetMapping("/getAllCategory")
-    public List<Category> getAllCategory() {
+    public List<Category> getAllCategory(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        System.out.println("Received token: " + token);
         return categoryService.list();
     }
 
@@ -39,7 +42,7 @@ public class CategoryController {
     }
 
     @ApiOperation(value = "update category")
-    @PostMapping("/updateCategory")
+    @PutMapping("/updateCategory")
     public GeneralBean updateCategory(@RequestBody Category category) {
         return categoryService.updateCategory(category);
     }

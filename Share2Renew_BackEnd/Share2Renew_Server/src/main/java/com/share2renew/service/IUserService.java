@@ -4,6 +4,7 @@ import com.share2renew.exception.ParamsException;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.security.core.Authentication;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -61,4 +62,13 @@ public interface IUserService extends IService<User> {
      * @return
      */
     public GeneralBean updateUser(User user);
+
+    /**
+     * Update user avatar
+     * @param url
+     * @param userId
+     * @param authentication
+     * @return
+     */
+    GeneralBean updateUserAvatar(String url, Integer userId, Authentication authentication);
 }

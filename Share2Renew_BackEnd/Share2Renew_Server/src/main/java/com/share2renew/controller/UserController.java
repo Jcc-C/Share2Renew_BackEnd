@@ -4,13 +4,12 @@ package com.share2renew.controller;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.share2renew.service.IUserService;
+import com.share2renew.util.FastDFSUtils;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.List;
@@ -45,24 +44,28 @@ public class UserController {
     }
 
     //Todo: (目前有错)应该是和spring security的相关配置有关 -> 看AdminInfoController - updateAdmin
-    @PostMapping("/updateUser")
+    @PutMapping("/updateUser")
     @ApiOperation(value = "updateUser")
     public GeneralBean updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
     @ApiOperation(value = "getALlUser")
-    @PostMapping("/getAllUser")
+    @GetMapping("/getAllUser")
     public List<User> getALlUser() {
         return userService.list();
     }
 
     //TODO: 更新头像
-//    @ApiOperation(value = "Update user avatar")
-//    @PostMapping("/updateAvatar")
-//    public GeneralBean updateUserAvatar() {
-//
-//    }
+    @ApiOperation(value = "Update user avatar")
+    @PostMapping("/updateAvatar")
+    public GeneralBean updateUserAvatar(MultipartFile file, Integer userId, Authentication authentication) {
+        //Upload file by FastDFS
+        String[] uploadPath = FastDFSUtils.upload(file);
+        //get the url
+        String url = FastDFSUtils.getTrackerUrl() + uploadPath[0] + "/" + uploadPath[1];
+        return userService.updateUserAvatar(url, userId, authentication);
+    }
 
 
 

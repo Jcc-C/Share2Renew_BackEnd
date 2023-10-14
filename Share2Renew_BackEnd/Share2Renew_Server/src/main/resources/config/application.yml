@@ -15,6 +15,8 @@ spring:
 ## Mybatis SQL 打印(方法接口所在的包，不是Mapper.xml所在的包)
 logging:
   level:
+    org.springframework.web: debug
+    org.springframework.security: debug
     com.share2renew.mapper: debug
 
 jwt:

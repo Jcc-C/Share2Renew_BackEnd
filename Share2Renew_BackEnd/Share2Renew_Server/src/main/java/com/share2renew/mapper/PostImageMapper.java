@@ -3,6 +3,8 @@ package com.share2renew.mapper;
 import com.share2renew.pojo.PostImage;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -13,4 +15,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface PostImageMapper extends BaseMapper<PostImage> {
 
+    /**
+     *
+     * @param postId
+     * @return
+     */
+    List<PostImage> getPostImageByPostId(Integer postId);
+
+    List<String> getPostImageByPostIdReturnUrl(Integer postId);
 }
