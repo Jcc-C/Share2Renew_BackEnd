@@ -6,6 +6,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.util.Arrays;
+
 /**
  * 跨域处理的配置文件 kevin
  */
@@ -13,15 +15,17 @@ import org.springframework.web.filter.CorsFilter;
 public class CorsConfig {
     @Bean
     public CorsFilter corsFilter(){
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("*");//允许谁异步访问  前端 端口号
-        corsConfiguration.setAllowCredentials(true);//允许cookie跨域
-        corsConfiguration.addAllowedMethod("*");//允许什么方法跨域
-        corsConfiguration.addAllowedHeader("*");
+            CorsConfiguration corsConfiguration = new CorsConfiguration();
+            //这个不能是"*",一定需要有一个端口号 -> 对于有端口号的，不是html直接启动
+            corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:8086/"));  // or specific domain e.g. "http://localhost:8080"
+            corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+            corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+            //对于前端直接html启动没有端口的，得false.
+            corsConfiguration.setAllowCredentials(true);//允许cookie跨域
 
-        UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",corsConfiguration);
+            UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+            urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",corsConfiguration);
 
-        return new CorsFilter(urlBasedCorsConfigurationSource);
+            return new CorsFilter(urlBasedCorsConfigurationSource);
     }
 }
