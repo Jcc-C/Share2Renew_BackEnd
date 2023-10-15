@@ -1,10 +1,8 @@
 package com.share2renew.pojo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.time.LocalDate;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -52,6 +50,7 @@ public class Post implements Serializable {
     @TableField("user_id")
     private Integer userId;
 
+    @TableLogic(value = "1",delval = "0") //逻辑处理注解（逻辑删除）value = "1" 默认的原值，delval = "0" 删除后的值
     private Integer validity;
 
 

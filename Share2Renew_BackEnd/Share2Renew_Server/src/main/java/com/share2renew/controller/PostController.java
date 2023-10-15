@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,21 +43,60 @@ public class PostController {
      * @param pageNo 第几页
      * @param pageSize 一页显示几个
      * @param title 需要搜索的帖子title 为空则显示所有
+     * @param categoryId  需要搜索的帖子种类 为空则显示所有
      * @return
      */
-    @PostMapping("/geyAllPostByPage")
-    @ApiOperation(value = "geyAllPostByPage")
-    public GeneralBean GetAllThePost(@RequestParam(value = "pageNo") Long pageNo,
-                                     @RequestParam(value = "pageSize") Long pageSize,
-                                     @RequestParam(value = "title", required = false) String title){
+    @GetMapping("/getAllOrSpecificPost")
+    @ApiOperation(value = "get all post with requirements")
+    public GeneralBean getAllOrSpecificPost(@RequestParam(value = "pageNo") int pageNo,
+                                     @RequestParam(value = "pageSize") int pageSize,
+                                     @RequestParam(value = "title", required = false) String title,
+                                     @RequestParam(value = "categoryId", required = false) Integer categoryId) {
 
-        return postService.showAllPosts(pageNo, pageSize, title);
+        return postService.getAllOrSpecificPost(pageNo, pageSize, title, categoryId);
     }
 
     @GetMapping("/getAllPost")
-    @ApiOperation(value = "getAllPost")
+    @ApiOperation(value = "get all post")
     public List<Post> getAllPost() {
         return postService.list();
     }
+
+    @PostMapping("/createNewPost")
+    @ApiOperation(value = "Create new post")
+    public GeneralBean CreateNewPost(@RequestBody Post newpost) {
+            return postService.createNewPost(newpost);
+    }
+
+    @GetMapping("/getPostByCategory")
+    @ApiOperation(value = "Get a post by category")
+    public GeneralBean GetPostByCategory(@RequestParam(value = "pageNo") int pageNo,
+                                         @RequestParam(value = "pageSize") int pageSize,
+                                         @RequestParam(value = "categoryId", required = false) int categoryId){
+        return postService.getPostByCategory(pageNo,pageSize,categoryId);
+    }
+
+    @GetMapping("/getPostByUserId")
+    @ApiOperation(value = "Get a post by user id")
+    public GeneralBean GetPostByUserId(@RequestParam(value = "pageNo") int pageNo,
+                                       @RequestParam(value = "pageSize") int pageSize,
+                                       @RequestParam(value = "userId", required = false) int userId){
+        return postService.getPostByUserId(pageNo,pageSize,userId);
+    }
+
+
+    @PutMapping("/updatePost")
+    @ApiOperation(value = "Update a post")
+    public GeneralBean UpdatePost(@RequestBody Post post){
+        return postService.updatepost(post);
+    }
+
+    @PutMapping("updatePostByPostId")
+    @ApiOperation(value = "update a post by postId")
+    public GeneralBean UpdatePostByPostId(@RequestBody Post post){
+        postService.updateById(post);
+        return  GeneralBean.success("update post successfully");
+    }
+
 
 }

@@ -32,7 +32,7 @@ public class PostImage implements Serializable {
     private Integer postImageId;
 
     @TableField("post_id")
-    private String postId;
+    private Integer postId;
 
     @TableField("image_url")
     private String imageUrl;
