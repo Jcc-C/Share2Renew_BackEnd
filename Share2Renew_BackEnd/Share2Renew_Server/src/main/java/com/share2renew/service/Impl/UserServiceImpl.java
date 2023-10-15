@@ -8,6 +8,7 @@ import com.share2renew.pojo.User;
 import com.share2renew.mapper.UserMapper;
 import com.share2renew.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.share2renew.util.FastDFSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,11 +17,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.encrypt.BytesEncryptor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,10 +66,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return GeneralBean.error("Current account is disabled!");
         }
         //Update user info
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+//        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+//        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
         //todo: 1-7
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails
+                ,null,userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
         //Generate token
         String token = jwtTokenUtil.generateToken(userDetails);
@@ -179,5 +181,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return GeneralBean.success("Update user information successfully");
         }
         return GeneralBean.error("Update user information failed");
+    }
+
+    /**
+     * Update user avatar
+     * @param url
+     * @param userId
+     * @param authentication
+     * @return
+     */
+    @Override
+    public GeneralBean updateUserAvatar(String url, Integer userId, Authentication authentication) {
+        //get current user
+        User user = userMapper.selectById(userId);
+        //set the user's url
+        user.setAvatar(url);
+        int result = userMapper.updateById(user);
+        if (result == 1) {
+            // Update Spring Security Information
+            User principal = (User) authentication.getPrincipal();
+            principal.setAvatar(url);
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, null, authentication.getAuthorities()));
+            return GeneralBean.success("Update successfully!", url);
+        }
+        return GeneralBean.error("Update failed!");
     }
 }

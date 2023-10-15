@@ -1,6 +1,6 @@
 package com.share2renew.mapper;
 
-import com.share2renew.pojo.Favouritepost;
+import com.share2renew.pojo.FavouritePost;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Junxian Cai
  * @since 2023-09-07
  */
-public interface FavouritepostMapper extends BaseMapper<Favouritepost> {
+public interface FavouritePostMapper extends BaseMapper<FavouritePost> {
 
 }

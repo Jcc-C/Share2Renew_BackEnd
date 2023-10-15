@@ -63,6 +63,10 @@ public class User implements Serializable, UserDetails {
     @ApiModelProperty(value = "users' location")
     private String location;
 
+    @ApiModelProperty(value = "user avatar address")
+    @TableField("avatar")
+    private String avatar;
+
     @ApiModelProperty(value = "Is valid or not")
     @Getter(AccessLevel.NONE)
     //@TableLogic //Logic delete -> 0: Active / 1: Deleted

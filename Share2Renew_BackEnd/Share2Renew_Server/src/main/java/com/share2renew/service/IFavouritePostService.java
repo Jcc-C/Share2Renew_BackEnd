@@ -1,6 +1,6 @@
 package com.share2renew.service;
 
-import com.share2renew.pojo.Favouritepost;
+import com.share2renew.pojo.FavouritePost;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Junxian Cai
  * @since 2023-09-07
  */
-public interface IFavouritepostService extends IService<Favouritepost> {
+public interface IFavouritePostService extends IService<FavouritePost> {
 
 }

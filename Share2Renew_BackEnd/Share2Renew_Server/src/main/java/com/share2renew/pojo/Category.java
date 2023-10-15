@@ -34,7 +34,7 @@ public class Category implements Serializable {
     @TableField("category_title")
     private String categoryTitle;
 
-    private Integer validity;
+//    private Integer validity;
 
 
 }

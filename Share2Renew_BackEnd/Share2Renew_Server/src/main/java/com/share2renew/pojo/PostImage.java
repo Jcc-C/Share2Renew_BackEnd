@@ -37,6 +37,7 @@ public class PostImage implements Serializable {
     @TableField("image_url")
     private String imageUrl;
 
+    // 1: 封面 2: 内容
     @TableField("image_type")
     private Integer imageType;
 

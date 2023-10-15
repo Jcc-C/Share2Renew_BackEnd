@@ -45,7 +45,7 @@ public class ShippingAddressController {
         return shippingAddressService.list();
     }
 
-    @PostMapping("/updateAddress")
+    @PutMapping("/updateAddress")
     public GeneralBean updateShippingAddress(@RequestBody ShippingAddress shippingAddress) {
         return shippingAddressService.updateShippingAddress(shippingAddress);
     }
