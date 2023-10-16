@@ -26,6 +26,8 @@ import java.security.Principal;
 @CrossOrigin
 public class LoginController {
 
+
+    //Test upload
     @Autowired
     private IUserService userService;
 
