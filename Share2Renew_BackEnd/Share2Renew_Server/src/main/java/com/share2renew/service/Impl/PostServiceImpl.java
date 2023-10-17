@@ -98,4 +98,18 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
         data.put("data", page.getRecords());
         return GeneralBean.success(data);
     }
+
+    @Override
+    public GeneralBean getPostByPostPurpose(int pageNo, int pageSize, int postPurpose) {
+        LambdaQueryWrapper<Post> wapper = new LambdaQueryWrapper<Post>();
+        wapper.eq(Post::getPostPurpose,postPurpose);
+
+        Page<Post> page = new Page<>(pageNo, pageSize);
+        postMapper.selectPage(page,wapper);
+
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("total", page.getTotal());
+        data.put("data", page.getRecords());
+        return GeneralBean.success(data);
+    }
 }

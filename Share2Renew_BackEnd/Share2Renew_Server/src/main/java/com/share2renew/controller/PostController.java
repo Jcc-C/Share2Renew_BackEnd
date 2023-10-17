@@ -98,5 +98,14 @@ public class PostController {
         return  GeneralBean.success("update post successfully");
     }
 
+    @PutMapping("updatePostByPostPurpose")
+    @ApiOperation(value = "get posts by post purpose")
+    public GeneralBean GetPostByPostPurpose(@RequestParam(value = "pageNo") int pageNo,
+                                            @RequestParam(value = "pageSize") int pageSize,
+                                            @RequestParam(value = "postPurpose", required = false) int postPurpose) {
+        return postService.getPostByPostPurpose(pageNo, pageSize, postPurpose);
+
+    }
+
 
 }

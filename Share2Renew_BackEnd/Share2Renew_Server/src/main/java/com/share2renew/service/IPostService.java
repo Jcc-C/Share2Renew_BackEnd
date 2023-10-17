@@ -7,6 +7,7 @@ import io.swagger.models.auth.In;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -24,8 +25,13 @@ public interface IPostService extends IService<Post> {
 
     GeneralBean updatepost(Post post);
 
-
     GeneralBean getPostByCategory(int pageNo, int pageSize, int categoryId);
 
     GeneralBean getPostByUserId(int pageNo, int pageSize, int userId);
+
+    GeneralBean getPostByPostPurpose(int pageNo, int pageSize, int postPurpose);
+
+
+
+
 }
