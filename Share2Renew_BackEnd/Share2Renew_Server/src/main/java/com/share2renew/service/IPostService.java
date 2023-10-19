@@ -20,7 +20,7 @@ public interface IPostService extends IService<Post> {
 
     GeneralBean getAllOrSpecificPost(int pageNo, int pageSize, String title, Integer categoryId);
 
-    GeneralBean createNewPost(Post post);
+    int createNewPost(Post post);
 
     GeneralBean updatepost(Post post);
 
