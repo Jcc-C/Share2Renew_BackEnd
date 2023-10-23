@@ -43,8 +43,8 @@ public class OrderController {
         return iOrderService.GetOrderDetail(orderId);
     }
 
-    @GetMapping("/getOrderOrSpecificByUserId")
-    @ApiOperation("Get order by userId")
+    @GetMapping("/buyerGetOrder")
+    @ApiOperation("Buyer Get order by userId")
     public GeneralBean GetOrderOrSpecificByUserId(@RequestParam(value = "pageNo") int pageNo,
                                                   @RequestParam(value = "pageSize") int pageSize,
                                                   @RequestParam(value = "userId") Integer userId,
@@ -52,8 +52,8 @@ public class OrderController {
         return iOrderService.GetOrderOrSpecificByUserId(pageNo, pageSize, userId, title);
     }
 
-    @GetMapping("/getdSolOrSpecificByUserId")
-    @ApiOperation("Get sold product by userId")
+    @GetMapping("/solderGetOrder")
+    @ApiOperation("Solder get order by userId")
     public GeneralBean GetSoldOrSpecificByUserId(@RequestParam(value = "pageNo") int pageNo,
                                                   @RequestParam(value = "pageSize") int pageSize,
                                                   @RequestParam(value = "userId") Integer userId,

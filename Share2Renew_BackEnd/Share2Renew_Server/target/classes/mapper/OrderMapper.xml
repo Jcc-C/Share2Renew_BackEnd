@@ -50,6 +50,8 @@
             p.post_purpose,
             p.price,
             p.category_id,
+            p.user_id as buyer_id,
+            o.user_id as seller_id,
             o.order_id,
             o.order_mobile,
             o.order_address,

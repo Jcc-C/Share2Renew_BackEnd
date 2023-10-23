@@ -4,7 +4,6 @@ import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.share2renew.pojo.UserLoginInfo;
 import com.share2renew.service.IUserService;
-import com.share2renew.util.IpUtils;
 import io.ipinfo.api.IPinfo;
 import io.ipinfo.api.errors.RateLimitedException;
 import io.ipinfo.api.model.IPResponse;

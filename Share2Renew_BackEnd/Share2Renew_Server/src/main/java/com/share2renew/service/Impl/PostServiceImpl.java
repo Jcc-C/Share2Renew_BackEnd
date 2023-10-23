@@ -116,7 +116,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public GeneralBean GetPostDetail(Integer postId, Integer userId) {
         int isOrder = 1;//能否下单 1 能  0 不能
-        if(postMapper.selectById(postId).getUserId() == userId){
+        if(postMapper.selectById(postId).getUserId().equals(userId)){
             isOrder = 0;
         }
         Map<String, Object> data = new HashMap<String, Object>();
