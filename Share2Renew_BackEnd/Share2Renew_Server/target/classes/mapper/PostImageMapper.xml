@@ -11,9 +11,27 @@
         <result column="validity" property="validity" />
     </resultMap>
 
+    <resultMap id="PostImageInfo" type="com.share2renew.pojo.PostImage">
+        <id column="post_image_id" property="postImageId" />
+        <result column="image_url" property="imageUrl" />
+        <result column="image_type" property="imageType" />
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         post_image_id, post_id, image_url, image_type, validity
     </sql>
+
+    <select id="getPostImageByUserId" resultMap="BaseResultMap">
+        select *
+        from t_post_image
+        where post_id = ${postId};
+    </select>
+
+    <select id="getPostImageByPostIdReturnUrl" resultType="String">
+        select image_url
+        from t_post_image
+        where post_id = ${postId};
+    </select>
 
 </mapper>

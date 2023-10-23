@@ -50,6 +50,11 @@ public class ShippingAddressController {
         return shippingAddressService.updateShippingAddress(shippingAddress);
     }
 
+    @DeleteMapping("/deleteAddress")
+    public GeneralBean deleteShippingAddress(@RequestParam Integer addressId){
+        return shippingAddressService.deleteShippingAddress(addressId);
+    }
+
 
 
 }

@@ -20,4 +20,8 @@
         post_id, post_detail, post_title, post_date, post_purpose, price, category_id, user_id, validity
     </sql>
 
+    <select id="GetPostId" resultType = "int" >
+        SELECT LAST_INSERT_ID()
+    </select>
+
 </mapper>

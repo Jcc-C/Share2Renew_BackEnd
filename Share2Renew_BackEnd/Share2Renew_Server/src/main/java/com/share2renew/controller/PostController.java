@@ -91,20 +91,27 @@ public class PostController {
         return postService.updatepost(post);
     }
 
-    @PutMapping("updatePostByPostId")
+    @PutMapping("/updatePostByPostId")
     @ApiOperation(value = "update a post by postId")
     public GeneralBean UpdatePostByPostId(@RequestBody Post post){
         postService.updateById(post);
         return  GeneralBean.success("update post successfully");
     }
 
-    @PutMapping("updatePostByPostPurpose")
+    @PutMapping("/updatePostByPostPurpose")
     @ApiOperation(value = "get posts by post purpose")
     public GeneralBean GetPostByPostPurpose(@RequestParam(value = "pageNo") int pageNo,
                                             @RequestParam(value = "pageSize") int pageSize,
                                             @RequestParam(value = "postPurpose", required = false) int postPurpose) {
         return postService.getPostByPostPurpose(pageNo, pageSize, postPurpose);
 
+    }
+
+    @GetMapping("/getPostDetail")
+    @ApiOperation("Get detail of the post")
+    public GeneralBean GetPostDetail(@RequestParam(value = "postId") Integer postId,
+                                     @RequestParam(value = "userId") Integer userId){
+        return postService.GetPostDetail(postId,userId);
     }
 
 

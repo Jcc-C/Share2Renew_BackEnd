@@ -58,4 +58,10 @@ public class ShippingAddressServiceImpl extends ServiceImpl<ShippingAddressMappe
         return GeneralBean.error("Update shippingAddress failed");
     }
 
+    @Override
+    public GeneralBean deleteShippingAddress(int addressId) {
+        shippingAddressMapper.deleteById(addressId);
+        return GeneralBean.success("Delete successfully");
+    }
+
 }

@@ -19,4 +19,79 @@
         order_id, user_id, post_id, order_mobile, order_address, tracking_id, order_state, validity
     </sql>
 
+    <select id="GetAllOrSpecificByuserId" resultType="com.share2renew.pojo.PostOrderInfo">
+        <bind name="pattern" value="'%' + title + '%'" />
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
+        FROM
+            share2renew.t_post p, share2renew.t_order o
+        WHERE
+                p.post_id IN (SELECT
+                                  o.post_id
+                              FROM
+                                  share2renew.t_order
+                              WHERE
+                                  o.user_id = #{userId} and p.post_title like #{pattern})
+    </select>
+
+    <select id="GetOrderDetail" resultType="com.share2renew.pojo.PostOrderInfo">
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
+        FROM
+            share2renew.t_post p, share2renew.t_order o
+        WHERE
+                p.post_id IN (SELECT
+                                  o.post_id
+                              FROM
+                                  share2renew.t_order
+                              WHERE
+                                  o.order_id = #{orderId})
+    </select>
+    <update id="UpdatePayStatus">
+        update share2renew.t_order set order_state = 1 where order_id = #{orderId}
+    </update>
+
+    <select id="GetSoldOrSpecificByuserId" resultType="com.share2renew.pojo.PostOrderInfo">
+        <bind name="pattern" value="'%' + title + '%'" />
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            p.user_id as buyer_id,
+            o.user_id as seller_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
+        FROM
+            share2renew.t_post p, share2renew.t_order o
+        WHERE
+                o.post_id IN (SELECT
+                                  p.post_id
+                              FROM
+                                  share2renew.t_post
+                              WHERE
+                                  p.user_id = #{userId} and p.post_title like #{pattern})
+    </select>
 </mapper>

@@ -1,9 +1,13 @@
 package com.share2renew.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.share2renew.pojo.GeneralBean;
+import com.share2renew.service.ICommentService;
+import com.share2renew.service.IOrderService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -16,5 +20,46 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+    @Autowired
+    private IOrderService iOrderService;
+
+    @PostMapping("/createOrder")
+    @ApiOperation("Create a new order")
+    public GeneralBean CreateOrder(@RequestParam(value = "userId") Integer userId,
+                                   @RequestParam(value = "postId") Integer postId,
+                                   @RequestParam(value = "addressId") Integer addressId){
+        return iOrderService.CreateOrder(userId, postId, addressId);
+    }
+
+    @PutMapping("/pay")
+    @ApiOperation("Pay money")
+    public GeneralBean PayOrder(@RequestParam(value = "orderId") String orderId){
+        return iOrderService.PayOrder(orderId);
+    }
+
+    @GetMapping("/getOrderDetail")
+    @ApiOperation("Get the detail of order")
+    public GeneralBean GetOrderDetail(@RequestParam(value = "orderId") String orderId){
+        return iOrderService.GetOrderDetail(orderId);
+    }
+
+    @GetMapping("/getOrderOrSpecificByUserId")
+    @ApiOperation("Get order by userId")
+    public GeneralBean GetOrderOrSpecificByUserId(@RequestParam(value = "pageNo") int pageNo,
+                                                  @RequestParam(value = "pageSize") int pageSize,
+                                                  @RequestParam(value = "userId") Integer userId,
+                                                  @RequestParam(value = "title", required = false) String title){
+        return iOrderService.GetOrderOrSpecificByUserId(pageNo, pageSize, userId, title);
+    }
+
+    @GetMapping("/getdSolOrSpecificByUserId")
+    @ApiOperation("Get sold product by userId")
+    public GeneralBean GetSoldOrSpecificByUserId(@RequestParam(value = "pageNo") int pageNo,
+                                                  @RequestParam(value = "pageSize") int pageSize,
+                                                  @RequestParam(value = "userId") Integer userId,
+                                                  @RequestParam(value = "title", required = false) String title){
+        return iOrderService.GetSoldOrSpecificByUserId(pageNo, pageSize, userId, title);
+    }
+
 
 }

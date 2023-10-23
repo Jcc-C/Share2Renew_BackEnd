@@ -32,6 +32,5 @@ public interface IPostService extends IService<Post> {
     GeneralBean getPostByPostPurpose(int pageNo, int pageSize, int postPurpose);
 
 
-
-
+    GeneralBean GetPostDetail(Integer postId, Integer userId);
 }

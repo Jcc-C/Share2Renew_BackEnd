@@ -88,7 +88,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public GeneralBean getPostByUserId(int pageNo, int pageSize, int userId) {
         LambdaQueryWrapper<Post> wapper = new LambdaQueryWrapper<Post>();
-        wapper.eq(Post::getCategoryId,userId);
+        wapper.eq(Post::getUserId,userId);
 
         Page<Post> page = new Page<>(pageNo, pageSize);
         postMapper.selectPage(page,wapper);
@@ -110,6 +110,18 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("total", page.getTotal());
         data.put("data", page.getRecords());
+        return GeneralBean.success(data);
+    }
+
+    @Override
+    public GeneralBean GetPostDetail(Integer postId, Integer userId) {
+        int isOrder = 1;//能否下单 1 能  0 不能
+        if(postMapper.selectById(postId).getUserId() == userId){
+            isOrder = 0;
+        }
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("isOrder", isOrder);
+        data.put("postDetail", postMapper.selectById(postId));
         return GeneralBean.success(data);
     }
 }
