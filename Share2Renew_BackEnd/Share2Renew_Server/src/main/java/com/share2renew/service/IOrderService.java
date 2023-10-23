@@ -1,7 +1,10 @@
 package com.share2renew.service;
 
+import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.Order;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IOrderService extends IService<Order> {
 
+    /**
+     * Get all the order by userId
+     * @param userId
+     * @return
+     */
+    GeneralBean getAllOrderByUserId(Integer userId);
 }
