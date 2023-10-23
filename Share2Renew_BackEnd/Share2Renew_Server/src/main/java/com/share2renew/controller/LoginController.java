@@ -4,6 +4,10 @@ import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.share2renew.pojo.UserLoginInfo;
 import com.share2renew.service.IUserService;
+import com.share2renew.util.IpUtils;
+import io.ipinfo.api.IPinfo;
+import io.ipinfo.api.errors.RateLimitedException;
+import io.ipinfo.api.model.IPResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
@@ -11,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
@@ -30,6 +36,9 @@ public class LoginController {
     //Test upload
     @Autowired
     private IUserService userService;
+    private static final String GET_IP_INFO_URL = "http://ipinfo.io/ip";
+    @Autowired
+    private RestTemplate restTemplate;
 
     @ApiOperation(value = "Login then return token")
     @PostMapping("/login")
@@ -73,6 +82,20 @@ public class LoginController {
         return userService.register(user);
     }
 
+    //TODO: 用这个api得到登陆信息, 创建多一个表用于给管理员查看登陆信息
+    @ApiOperation("Get ip info")
+    @GetMapping("/getIpInfo")
+    public String getIpInfo(HttpServletRequest request) throws RateLimitedException {
+        IPinfo iPinfo = new IPinfo.Builder().setToken("94fa75aedcef6d").build();
 
+        String ipAddress = restTemplate.getForObject(GET_IP_INFO_URL, String.class).trim();
+
+        IPResponse ipResponse = iPinfo.lookupIP(ipAddress);
+        String countryCode = ipResponse.getCountryCode();
+        String region = ipResponse.getRegion();
+        String ip = ipResponse.getIp();
+        String city = ipResponse.getCity();
+        return "You are in " + city + "/" + region + "/" + countryCode + " now.";
+    }
 
 }

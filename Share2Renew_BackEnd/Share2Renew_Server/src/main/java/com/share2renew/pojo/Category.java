@@ -1,9 +1,7 @@
 package com.share2renew.pojo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -34,7 +32,9 @@ public class Category implements Serializable {
     @TableField("category_title")
     private String categoryTitle;
 
-//    private Integer validity;
+    @TableField("validity")
+    @TableLogic(value = "1", delval = "0")
+    private Integer validity;
 
 
 }

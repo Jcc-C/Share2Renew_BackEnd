@@ -27,11 +27,11 @@ public class PostImageController {
     @Autowired
     private IPostImageService postImageService;
 
-    @GetMapping("/getPostImageByPostId")
-    @ApiOperation(value = "get all post imageFiles by userId")
-    public GeneralBean getPostImageByUserId(@RequestParam Integer postId) {
-        return postImageService.getPostImageByUserId(postId);
-    }
+//    @GetMapping("/getPostImageByPostId")
+//    @ApiOperation(value = "get all post imageFiles by userId")
+//    public GeneralBean getPostImageByUserId(@RequestParam Integer postId) {
+//        return postImageService.getPostImageByUserId(postId);
+//    }
 
     /**
      * 是按顺序取出来的，所以第一张永远是封面的照片
