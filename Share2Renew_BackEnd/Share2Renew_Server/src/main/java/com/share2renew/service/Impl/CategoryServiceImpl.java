@@ -29,6 +29,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
      */
     @Override
     public GeneralBean createCategory(Category category) {
+        category.setValidity(1);
         int result = categoryMapper.insert(category);
         if (result == 1) {
             return GeneralBean.success("Create category successfully!");

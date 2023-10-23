@@ -74,8 +74,10 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
     @Override
     public GeneralBean getPostImageByPostIdReturnUrl(Integer postId) {
         List<String> postImageByUserId = postImageMapper.getPostImageByPostIdReturnUrl(postId);
-        if (postImageByUserId != null) {
+        if (postImageByUserId != null && postImageByUserId.size() > 0) {
             return GeneralBean.success(postImageByUserId);
+        } else if (postImageByUserId.size() == 0) {
+            return GeneralBean.error("This post has no images");
         }
         return GeneralBean.error("Get images failed");
     }

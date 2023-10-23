@@ -43,7 +43,6 @@ public class UserController {
         return userService.updatePassword(userInfo);
     }
 
-    //Todo: (目前有错)应该是和spring security的相关配置有关 -> 看AdminInfoController - updateAdmin
     @PutMapping("/updateUser")
     @ApiOperation(value = "updateUser")
     public GeneralBean updateUser(@RequestBody User user) {
@@ -56,17 +55,21 @@ public class UserController {
         return userService.list();
     }
 
-    //TODO: 更新头像
+    /**
+     * Update user avatar
+     * @param file
+     * @param userId
+     * @param authentication
+     * @return
+     */
     @ApiOperation(value = "Update user avatar")
     @PostMapping("/updateAvatar")
-    public GeneralBean updateUserAvatar(MultipartFile file, Integer userId, Authentication authentication) {
+    public GeneralBean updateUserAvatar(@RequestParam MultipartFile file, Integer userId, Authentication authentication) {
         //Upload file by FastDFS
         String[] uploadPath = FastDFSUtils.upload(file);
         //get the url
         String url = FastDFSUtils.getTrackerUrl() + uploadPath[0] + "/" + uploadPath[1];
         return userService.updateUserAvatar(url, userId, authentication);
     }
-
-
 
 }

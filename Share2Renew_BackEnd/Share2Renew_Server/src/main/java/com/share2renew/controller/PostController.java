@@ -94,8 +94,11 @@ public class PostController {
     @PutMapping("/updatePostByPostId")
     @ApiOperation(value = "update a post by postId")
     public GeneralBean UpdatePostByPostId(@RequestBody Post post){
-        postService.updateById(post);
-        return  GeneralBean.success("update post successfully");
+        boolean result = postService.updateById(post);
+        if (result = true) {
+            return  GeneralBean.success("update post successfully.");
+        }
+        return  GeneralBean.error("update post failed!");
     }
 
     @PutMapping("/updatePostByPostPurpose")
