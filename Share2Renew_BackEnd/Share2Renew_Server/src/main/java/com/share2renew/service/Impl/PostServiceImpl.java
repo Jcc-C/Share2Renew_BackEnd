@@ -57,10 +57,10 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     }
 
     @Override
-    public GeneralBean createNewPost(Post post) {
+    public int createNewPost(Post post) {
         post.setValidity(1);
         postMapper.insert(post);
-        return GeneralBean.success("Create new post successfully");
+        return postMapper.GetPostId();
     }
 
     @Override

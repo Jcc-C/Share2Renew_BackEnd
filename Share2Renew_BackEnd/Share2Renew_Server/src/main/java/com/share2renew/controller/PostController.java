@@ -64,7 +64,7 @@ public class PostController {
 
     @PostMapping("/createNewPost")
     @ApiOperation(value = "Create new post")
-    public GeneralBean CreateNewPost(@RequestBody Post newpost) {
+    public int CreateNewPost(@RequestBody Post newpost) {
             return postService.createNewPost(newpost);
     }
 
