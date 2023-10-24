@@ -96,4 +96,19 @@
                               WHERE
                                   p.user_id = #{userId} and p.post_title like #{pattern})
     </select>
+
+    <select id="GetOrderByUserIdAndStatus" resultType="com.share2renew.pojo.PostOrderInfo">
+        SELECT o.*
+        FROM share2renew.t_order o
+        WHERE user_id = #{userId} AND order_status = #{order_status};
+    </select>
+
+
+    <select id="GetOrderByUserIdAndPostPurpose" resultType="com.share2renew.pojo.PostOrderInfo">
+        SELECT o.*
+        FROM share2renew.t_order o
+        INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
+        WHERE o.userId = #{userId} and p.post_purpose = #{post_purpose}
+
+    </select>
 </mapper>

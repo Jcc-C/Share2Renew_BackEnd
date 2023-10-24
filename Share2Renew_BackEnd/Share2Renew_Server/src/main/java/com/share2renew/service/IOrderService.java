@@ -16,7 +16,6 @@ public interface IOrderService extends IService<Order> {
 
     GeneralBean CreateOrder(Integer userId, Integer postId, Integer addressId);
 
-
     GeneralBean GetOrderOrSpecificByUserId(int pageNo, int pageSize, Integer userId, String title);
 
     GeneralBean PayOrder(String orderId);
@@ -24,4 +23,15 @@ public interface IOrderService extends IService<Order> {
     GeneralBean GetOrderDetail(String orderId);
 
     GeneralBean GetSoldOrSpecificByUserId(int pageNo, int pageSize, Integer userId, String title);
+
+    GeneralBean GetOrdersByUserIdAndStatus(int pageNo, int pageSize,int userId, int status);
+
+    GeneralBean GetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize,int userId, int post_purpose);
+
+    GeneralBean CancelOrder(int orderId);
+
+    GeneralBean GetUserOrderCount(int userId);
+
+
+
 }

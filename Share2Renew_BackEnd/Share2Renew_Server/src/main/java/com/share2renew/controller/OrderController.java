@@ -61,5 +61,25 @@ public class OrderController {
         return iOrderService.GetSoldOrSpecificByUserId(pageNo, pageSize, userId, title);
     }
 
+    @GetMapping("/getOrderByPurpose")
+    @ApiOperation("get order by userId and post_purpose")
+    public GeneralBean GetOrderByUserIdAndPurpose(@RequestParam(value = "pageNo") int pageNo,
+                                                  @RequestParam(value = "pageSize") int pageSize,
+                                                  @RequestParam(value = "userId") Integer userId,
+                                                  @RequestParam(value = "post_purpose", required = false) int purpose) {
+        return iOrderService.GetOrdersByUserIdAndPostPurpose(pageNo, pageSize, userId, purpose);
+    }
+
+    @GetMapping("/getOrderByStatus")
+    @ApiOperation("get order by userId and order_status")
+    public GeneralBean GetOrderByUserIdAndStatus(@RequestParam(value = "pageNo") int pageNo,
+                                                  @RequestParam(value = "pageSize") int pageSize,
+                                                  @RequestParam(value = "userId") Integer userId,
+                                                  @RequestParam(value = "post_purpose", required = false) int status) {
+        return iOrderService.GetOrdersByUserIdAndStatus(pageNo, pageSize, userId, status);
+    }
+
+
+
 
 }

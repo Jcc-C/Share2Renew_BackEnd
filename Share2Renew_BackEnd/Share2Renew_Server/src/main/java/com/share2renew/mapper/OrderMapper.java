@@ -22,4 +22,10 @@ public interface OrderMapper extends BaseMapper<Order> {
     void UpdatePayStatus(String orderId);
     List<PostOrderInfo> GetOrderDetail(String orderId);
 
+    IPage<PostOrderInfo> GetOrderByUserIdAndPostPurpose(IPage<PostOrderInfo> page, int userId, int post_purpose);
+
+    IPage<PostOrderInfo> GetOrdersByUserIdAndStatus(IPage<PostOrderInfo> page, int userId, int order_status);
+
+
+
 }

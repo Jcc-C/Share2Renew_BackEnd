@@ -28,13 +28,13 @@ public class AdminController {
     @Autowired
     private IAdminService adminService;
 
-    @ApiOperation(value = "admin login")
-    @PostMapping("/adminLogin")
-    public Admin adminLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
-
-        return adminService.adminLogin(username,password);
-
-    }
+//    @ApiOperation(value = "admin login")
+//    @PostMapping("/adminLogin")
+//    public Admin adminLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
+//
+//        return adminService.adminLogin(username,password);
+//
+//    }
 
     @ApiOperation(value = "modify user validity")
     @GetMapping("/modifyUserValidity")

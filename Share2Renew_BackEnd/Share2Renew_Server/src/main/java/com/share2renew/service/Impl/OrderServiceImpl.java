@@ -20,7 +20,7 @@ import java.util.*;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author Junxian Cai
@@ -37,8 +37,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public GeneralBean CreateOrder(Integer userId, Integer postId, Integer addressId) {
-        if(userId == 0)
-        {
+        if (userId == 0) {
             return GeneralBean.error("Login first");
         }
         Order order = new Order();
@@ -49,7 +48,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setTrackingId(df.format(new Date()));
         order.setPostId(postId);
         order.setUserId(userId);
-        order.setOrderAddress(String.valueOf(shippingAddressMapper.selectById(addressId).getPostcode())+" "+shippingAddressMapper.selectById(addressId).getAddressDetail());
+        order.setOrderAddress(String.valueOf(shippingAddressMapper.selectById(addressId).getPostcode()) + " " + shippingAddressMapper.selectById(addressId).getAddressDetail());
         order.setOrderMobile(shippingAddressMapper.selectById(addressId).getAddressMobile());
         order.setOrderState(0);//0 下单生成订单  1已经付款    2收货
         order.setValidity(1);
@@ -63,7 +62,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         IPage<PostOrderInfo> iPage = orderMapper.GetAllOrSpecificByuserId(page, userId, title);
         Map<String, Object> data = new HashMap<>();
         data.put("total", iPage.getTotal());
-        data.put("data",iPage.getRecords());
+        data.put("data", iPage.getRecords());
         return GeneralBean.success(data);
     }
 
@@ -85,8 +84,40 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         IPage<PostOrderInfo> iPage = orderMapper.GetSoldOrSpecificByuserId(page, userId, title);
         Map<String, Object> data = new HashMap<>();
         data.put("total", iPage.getTotal());
-        data.put("data",iPage.getRecords());
+        data.put("data", iPage.getRecords());
         return GeneralBean.success(data);
+    }
+
+    @Override
+    public GeneralBean GetOrdersByUserIdAndStatus(int pageNo, int pageSize, int userId, int status) {
+        Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
+        IPage<PostOrderInfo> iPage = orderMapper.GetOrdersByUserIdAndStatus(page, userId, status);
+        Map<String, Object> data = new HashMap<>();
+        data.put("total", iPage.getTotal());
+        data.put("data", iPage.getRecords());
+        return GeneralBean.success(data);
+    }
+
+    @Override
+    public GeneralBean GetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize, int userId, int post_purpose) {
+
+        Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
+        IPage<PostOrderInfo> iPage = orderMapper.GetOrderByUserIdAndPostPurpose(page, userId, post_purpose);
+        Map<String, Object> data = new HashMap<>();
+        data.put("total", iPage.getTotal());
+        data.put("data", iPage.getRecords());
+        return GeneralBean.success(data);
+
+    }
+
+    @Override
+    public GeneralBean CancelOrder(int orderId) {
+        return null;
+    }
+
+    @Override
+    public GeneralBean GetUserOrderCount(int userId) {
+        return null;
     }
 
 
