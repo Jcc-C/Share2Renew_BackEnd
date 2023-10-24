@@ -5,6 +5,7 @@ import com.share2renew.exception.ParamsException;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.ShippingAddress;
 import com.share2renew.service.IShippingAddressService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,12 @@ public class ShippingAddressController {
     @GetMapping("/getAllAddress")
     public List<ShippingAddress> getALlShippingAddress() {
         return shippingAddressService.list();
+    }
+
+    @GetMapping("/getAddressByUserId")
+    @ApiOperation("Get address by userId")
+    public GeneralBean GetAddressByUserId(@RequestParam(value = "userId") Integer userId){
+        return shippingAddressService.GetAddressByUserId(userId);
     }
 
     @PutMapping("/updateAddress")

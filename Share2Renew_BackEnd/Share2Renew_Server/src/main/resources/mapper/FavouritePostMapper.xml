@@ -14,5 +14,20 @@
     <sql id="Base_Column_List">
         favouritepost_id, post_id, user_id, validity
     </sql>
+    <select id="GetFavouriteList" resultType="com.share2renew.pojo.Post">
+        <bind name="pattern" value="'%' + title + '%'" />
+        SELECT
+            *
+        FROM
+            share2renew.t_post p
+        WHERE
+                post_id IN (SELECT
+                                post_id
+                            FROM
+                                share2renew.t_favourite_post
+                            WHERE
+                                user_id = #{userId})
+          AND post_title LIKE #{pattern}
+    </select>
 
 </mapper>

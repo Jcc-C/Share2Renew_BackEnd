@@ -27,4 +27,6 @@ public interface IShippingAddressService extends IService<ShippingAddress> {
     GeneralBean updateShippingAddress(ShippingAddress shippingAddress);
 
     GeneralBean deleteShippingAddress(int addressId);
+
+    GeneralBean GetAddressByUserId(Integer userId);
 }

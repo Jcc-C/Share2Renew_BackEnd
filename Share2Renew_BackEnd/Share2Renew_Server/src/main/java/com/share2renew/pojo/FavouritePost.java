@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_favouritePost")
+@TableName("t_favourite_post")
 @ApiModel(value="FavouritePost对象", description="")
 public class FavouritePost implements Serializable {
 

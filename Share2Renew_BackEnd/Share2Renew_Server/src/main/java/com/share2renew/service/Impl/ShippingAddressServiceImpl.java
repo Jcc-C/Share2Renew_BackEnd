@@ -1,7 +1,9 @@
 package com.share2renew.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.share2renew.exception.ParamsException;
 import com.share2renew.pojo.GeneralBean;
+import com.share2renew.pojo.Post;
 import com.share2renew.pojo.ShippingAddress;
 import com.share2renew.mapper.ShippingAddressMapper;
 import com.share2renew.service.IShippingAddressService;
@@ -62,6 +64,13 @@ public class ShippingAddressServiceImpl extends ServiceImpl<ShippingAddressMappe
     public GeneralBean deleteShippingAddress(int addressId) {
         shippingAddressMapper.deleteById(addressId);
         return GeneralBean.success("Delete successfully");
+    }
+
+    @Override
+    public GeneralBean GetAddressByUserId(Integer userId) {
+        LambdaQueryWrapper<ShippingAddress> wapper = new LambdaQueryWrapper<>();
+        wapper.eq(ShippingAddress::getUserId,userId);
+        return GeneralBean.success(shippingAddressMapper.selectList(wapper));
     }
 
 }
