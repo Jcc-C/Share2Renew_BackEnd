@@ -6,6 +6,7 @@ import com.share2renew.service.IPostImageService;
 import com.share2renew.util.FastDFSUtils;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,7 +45,7 @@ public class PostImageController {
         return postImageService.getPostImageByPostIdReturnUrl(postId);
     }
 
-    @PostMapping("/uploadPostImage")
+    @PostMapping(value = "/uploadPostImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ApiOperation(value = "upload post imageFiles")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "imageFiles", value = "上传的图片文件", dataType = "__file", paramType = "form", allowMultiple = true )
