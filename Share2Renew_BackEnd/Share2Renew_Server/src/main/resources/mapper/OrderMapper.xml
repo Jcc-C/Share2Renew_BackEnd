@@ -100,15 +100,27 @@
     <select id="GetOrderByUserIdAndStatus" resultType="com.share2renew.pojo.PostOrderInfo">
         SELECT o.*
         FROM share2renew.t_order o
-        WHERE user_id = #{userId} AND order_status = #{order_status};
+        WHERE user_id = #{userId} AND order_state = #{order_state};
     </select>
 
 
     <select id="GetOrderByUserIdAndPostPurpose" resultType="com.share2renew.pojo.PostOrderInfo">
-        SELECT o.*
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            p.user_id as buyer_id,
+            o.user_id as seller_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
         FROM share2renew.t_order o
         INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
-        WHERE o.userId = #{userId} and p.post_purpose = #{post_purpose}
+        WHERE o.user_id = #{userId} and p.post_purpose = #{post_purpose}
 
     </select>
 </mapper>
