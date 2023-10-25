@@ -24,7 +24,6 @@ public interface IOrderService extends IService<Order> {
     GeneralBean GetOrderDetail(String orderId);
 
     GeneralBean SellerGetOrder(int pageNo, int pageSize, Integer buyerId, String title);
-    GeneralBean GetSoldOrSpecificByUserId(int pageNo, int pageSize, Integer userId, String title);
 
     GeneralBean GetOrdersByUserIdAndStatus(int pageNo, int pageSize,int userId, int status);
 

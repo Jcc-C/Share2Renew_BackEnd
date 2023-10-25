@@ -97,7 +97,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     public GeneralBean SellerGetOrder(int pageNo, int pageSize, Integer userId, String title) {
         Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
         IPage<PostOrderInfo> iPage = orderMapper.SellerGetOrder(page, userId, title);
-        IPage<PostOrderInfo> iPage = orderMapper.GetSoldOrSpecificByuserId(page, userId, title);
         Map<String, Object> data = new HashMap<>();
         data.put("total", iPage.getTotal());
         data.put("data", iPage.getRecords());
