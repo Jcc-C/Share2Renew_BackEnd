@@ -8,9 +8,13 @@ import com.share2renew.pojo.User;
 import com.share2renew.mapper.UserMapper;
 import com.share2renew.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.share2renew.util.FastDFSUtils;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,8 +23,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +54,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private JwtTokenUtil jwtTokenUtil;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+    @Autowired
+    private JavaMailSenderImpl javaMailSender;
+    @Value("${spring.mail.username}")
+    private String senderEmail;
+    @Autowired
+    private Configuration configuration;
 
     /**
      * return token after login
@@ -205,5 +220,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return GeneralBean.success("Update successfully!", url);
         }
         return GeneralBean.error("Update failed!");
+    }
+
+    @Override
+    public void sendEmail() throws IOException, MessagingException, TemplateException {
+
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+
+        Template template = configuration.getTemplate("welcomeMail.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, null);
+
+        helper.setTo("kevin.f.shen@foxmail.com");
+        helper.setText(html, true);
+        helper.setSubject("Welcome Mail");
+        helper.setFrom(senderEmail);
+
+        javaMailSender.send(mimeMessage);
+
+
     }
 }

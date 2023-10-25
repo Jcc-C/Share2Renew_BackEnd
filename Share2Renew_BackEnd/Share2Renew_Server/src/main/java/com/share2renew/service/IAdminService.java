@@ -2,9 +2,12 @@ package com.share2renew.service;
 
 import com.share2renew.pojo.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.Post;
 import com.share2renew.pojo.User;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -17,7 +20,7 @@ import java.util.List;
  */
 public interface IAdminService extends IService<Admin> {
 
-    Admin adminLogin(String username, String password);
+    GeneralBean adminLogin(String username, String password, HttpServletRequest request);
 
     /**
      * get all users basic information from db
@@ -51,7 +54,24 @@ public interface IAdminService extends IService<Admin> {
      */
     void modifyUserCommentRight(int userId, int commentRight);
 
+    /**
+     * Return admin by username
+     * @param userName
+     * @return
+     */
+    Admin getAdminByUserName(String userName);
 
+    /**
+     * For admin register
+     * @param admin
+     * @return
+     */
+    GeneralBean registerAdmin(Admin admin);
 
-
+    /**
+     * For getting current admin
+     * @param principal
+     * @return
+     */
+    Admin getCurrentAdmin(Principal principal);
 }

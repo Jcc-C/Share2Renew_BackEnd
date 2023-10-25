@@ -4,9 +4,12 @@ import com.share2renew.exception.ParamsException;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import freemarker.template.TemplateException;
 import org.springframework.security.core.Authentication;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -71,4 +74,6 @@ public interface IUserService extends IService<User> {
      * @return
      */
     GeneralBean updateUserAvatar(String url, Integer userId, Authentication authentication);
+
+    void sendEmail() throws IOException, MessagingException, TemplateException;
 }

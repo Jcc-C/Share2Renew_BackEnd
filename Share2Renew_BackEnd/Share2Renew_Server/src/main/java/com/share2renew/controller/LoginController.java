@@ -3,6 +3,7 @@ package com.share2renew.controller;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.share2renew.pojo.UserLoginInfo;
+import com.share2renew.service.IAdminService;
 import com.share2renew.service.IUserService;
 import io.ipinfo.api.IPinfo;
 import io.ipinfo.api.errors.RateLimitedException;
@@ -35,6 +36,8 @@ public class LoginController {
     //Test upload
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IAdminService adminService;
     private static final String GET_IP_INFO_URL = "http://ipinfo.io/ip";
     @Autowired
     private RestTemplate restTemplate;
@@ -43,6 +46,12 @@ public class LoginController {
     @PostMapping("/login")
     public GeneralBean login(@RequestBody UserLoginInfo userLoginInfo, HttpServletRequest request) {
         return userService.login(userLoginInfo.getUsername(), userLoginInfo.getPassword(), request);
+    }
+
+    @ApiOperation(value = "Admin Login")
+    @PostMapping("/adminLogin")
+    public GeneralBean adminLogin(@RequestBody UserLoginInfo userLoginInfo, HttpServletRequest request) {
+        return adminService.adminLogin(userLoginInfo.getUsername(), userLoginInfo.getPassword(), request);
     }
 
     /**

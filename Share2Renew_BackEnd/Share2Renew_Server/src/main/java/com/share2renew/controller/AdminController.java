@@ -2,6 +2,7 @@ package com.share2renew.controller;
 
 
 import com.share2renew.pojo.Admin;
+import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.Post;
 import com.share2renew.pojo.User;
 import com.share2renew.service.IAdminService;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -25,16 +27,22 @@ import java.util.List;
 @Api(tags = "AdminController")
 public class AdminController {
 
+    //TODO: JWT好像也算API
+
     @Autowired
     private IAdminService adminService;
 
-//    @ApiOperation(value = "admin login")
-//    @PostMapping("/adminLogin")
-//    public Admin adminLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
-//
-//        return adminService.adminLogin(username,password);
-//
-//    }
+    @ApiOperation(value = "registerAdmin")
+    @PostMapping("/registerAdmin")
+    public GeneralBean registerAdmin(@RequestBody Admin admin) {
+        return adminService.registerAdmin(admin);
+    }
+
+    @ApiOperation(value = "get current admin")
+    @GetMapping("/admin/info")
+    public Admin getCurrentAdmin(Principal principal) {
+        return adminService.getCurrentAdmin(principal);
+    }
 
     @ApiOperation(value = "modify user validity")
     @GetMapping("/modifyUserValidity")

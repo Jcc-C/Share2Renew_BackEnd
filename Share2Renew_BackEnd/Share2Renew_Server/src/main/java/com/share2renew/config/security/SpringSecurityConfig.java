@@ -3,7 +3,9 @@ package com.share2renew.config.security;
 import com.share2renew.config.security.filter.JwtAuthenticationTokenFilter;
 import com.share2renew.config.security.filter.RestAuthorizationEntryPoint;
 import com.share2renew.config.security.filter.RestfulAccessDeniedHandler;
+import com.share2renew.pojo.Admin;
 import com.share2renew.pojo.User;
+import com.share2renew.service.IAdminService;
 import com.share2renew.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,6 +41,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private IUserService userService;
     @Autowired
+    private IAdminService adminService;
+    @Autowired
     private RestAuthorizationEntryPoint restAuthorizationEntryPoint;
     @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
@@ -55,8 +59,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         //Override UserDetailsService method
         return userName -> {
             User user = userService.getUserByUserName(userName);
+            Admin admin = adminService.getAdminByUserName(userName);
+
             if (null != user) {
                 return user;
+            } else if (null != admin) {
+                return admin;
             }
             return null;
         };
@@ -99,6 +107,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
                 "/login",
+                "/adminLogin",
+                "admin/registerAdmin",
                 "/logout",
                 "/register",
                 "/css/**",

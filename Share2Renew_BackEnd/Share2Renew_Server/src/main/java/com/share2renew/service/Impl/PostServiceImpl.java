@@ -46,7 +46,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     public GeneralBean getAllOrSpecificPost(int pageNo, int pageSize, String title, Integer categoryId) {
         LambdaQueryWrapper<Post> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(StringUtils.hasLength(title), Post::getPostTitle,title); //条件查询
-        wrapper.eq(categoryId !=null,Post::getCategoryId,categoryId);
+        wrapper.eq(categoryId !=null, Post::getCategoryId, categoryId);
         Page<Post> page = new Page<>(pageNo, pageSize);
         postService.page(page,wrapper);
 
