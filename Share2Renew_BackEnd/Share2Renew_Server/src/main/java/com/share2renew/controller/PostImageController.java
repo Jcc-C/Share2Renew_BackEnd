@@ -47,7 +47,7 @@ public class PostImageController {
     @PostMapping("/uploadPostImage")
     @ApiOperation(value = "upload post imageFiles")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "imageFiles", value = "上传的图片文件", dataType = "__file", paramType = "form", allowMultiple = true)
+            @ApiImplicitParam(name = "imageFiles", value = "上传的图片文件", dataType = "__file", paramType = "form", allowMultiple = true )
     })
     public GeneralBean uploadPostImage(@RequestParam List<MultipartFile> imageFiles, @RequestParam Integer postId) {
 
