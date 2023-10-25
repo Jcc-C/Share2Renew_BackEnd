@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -30,8 +32,14 @@ public class Order implements Serializable {
     @TableId("order_id")
     private String orderId;
 
-    @TableField("user_id")
-    private Integer userId;
+    @TableField("buyer_id")
+    private Integer buyerId;
+
+    @TableField("seller_id")
+    private Integer sellerId;
+
+    @TableField("order_date")
+    private Date orderDate;
 
     @TableField("post_id")
     private Integer postId;

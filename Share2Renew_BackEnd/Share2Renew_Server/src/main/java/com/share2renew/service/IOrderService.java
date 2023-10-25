@@ -16,12 +16,14 @@ public interface IOrderService extends IService<Order> {
 
     GeneralBean CreateOrder(Integer userId, Integer postId, Integer addressId);
 
-    GeneralBean GetOrderOrSpecificByUserId(int pageNo, int pageSize, Integer userId, String title);
+
+    GeneralBean BuyerGetOrder(int pageNo, int pageSize, Integer userId, String title);
 
     GeneralBean PayOrder(String orderId);
 
     GeneralBean GetOrderDetail(String orderId);
 
+    GeneralBean SellerGetOrder(int pageNo, int pageSize, Integer buyerId, String title);
     GeneralBean GetSoldOrSpecificByUserId(int pageNo, int pageSize, Integer userId, String title);
 
     GeneralBean GetOrdersByUserIdAndStatus(int pageNo, int pageSize,int userId, int status);
