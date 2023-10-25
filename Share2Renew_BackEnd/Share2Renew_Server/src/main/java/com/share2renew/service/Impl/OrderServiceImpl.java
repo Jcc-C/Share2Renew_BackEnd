@@ -1,6 +1,5 @@
 package com.share2renew.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.share2renew.mapper.PostMapper;
@@ -16,11 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -61,7 +56,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setSellerId(postMapper.selectById(postId).getUserId());
         order.setOrderAddress(String.valueOf(shippingAddressMapper.selectById(addressId).getPostcode())+" "+shippingAddressMapper.selectById(addressId).getAddressDetail());
         order.setOrderMobile(shippingAddressMapper.selectById(addressId).getAddressMobile());
-        order.setOrderState(0);//0 下单生成订单  1已经付款    2收货
+        order.setOrderState(0);//0 下单生成订单  1已经付款    2收货   3取消订单
         order.setValidity(1);
         order.setOrderDate(date);
         post.setPostId(postId);
@@ -104,9 +99,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     }
 
     @Override
-    public GeneralBean GetOrdersByUserIdAndStatus(int pageNo, int pageSize, int userId, int status) {
+    public GeneralBean SellerGetOrdersByUserIdAndStatus(int pageNo, int pageSize, int userId, int status) {
         Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
-        IPage<PostOrderInfo> iPage = orderMapper.GetOrdersByUserIdAndStatus(page, userId, status);
+        IPage<PostOrderInfo> iPage = orderMapper.SellerGetOrderByUserIdAndStatus(page, userId, status);
         Map<String, Object> data = new HashMap<>();
         data.put("total", iPage.getTotal());
         data.put("data", iPage.getRecords());
@@ -114,10 +109,32 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     }
 
     @Override
-    public GeneralBean GetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize, int userId, int post_purpose) {
+    public GeneralBean SellerGetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize, int userId, int post_purpose) {
 
         Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
-        IPage<PostOrderInfo> iPage = orderMapper.GetOrderByUserIdAndPostPurpose(page, userId, post_purpose);
+        IPage<PostOrderInfo> iPage = orderMapper.SellerGetOrderByUserIdAndPostPurpose(page, userId, post_purpose);
+        Map<String, Object> data = new HashMap<>();
+        data.put("total", iPage.getTotal());
+        data.put("data",iPage.getRecords());
+        return GeneralBean.success(data);
+
+    }
+
+    @Override
+    public GeneralBean BuyerGetOrdersByUserIdAndStatus(int pageNo, int pageSize, int userId, int status) {
+        Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
+        IPage<PostOrderInfo> iPage = orderMapper.BuyerGetOrderByUserIdAndStatus(page, userId, status);
+        Map<String, Object> data = new HashMap<>();
+        data.put("total", iPage.getTotal());
+        data.put("data", iPage.getRecords());
+        return GeneralBean.success(data);
+    }
+
+    @Override
+    public GeneralBean BuyerGetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize, int userId, int post_purpose) {
+
+        Page<PostOrderInfo> page = new Page<>(pageNo, pageSize);
+        IPage<PostOrderInfo> iPage = orderMapper.BuyerGetOrderByUserIdAndPostPurpose(page, userId, post_purpose);
         Map<String, Object> data = new HashMap<>();
         data.put("total", iPage.getTotal());
         data.put("data",iPage.getRecords());
@@ -128,7 +145,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public GeneralBean CancelOrder(int orderId) {
-        return null;
+        orderMapper.CancelOrder(orderId);
+        return GeneralBean.success("Cancel order successful");
     }
 
     @Override

@@ -25,9 +25,13 @@ public interface IOrderService extends IService<Order> {
 
     GeneralBean SellerGetOrder(int pageNo, int pageSize, Integer buyerId, String title);
 
-    GeneralBean GetOrdersByUserIdAndStatus(int pageNo, int pageSize,int userId, int status);
+    GeneralBean SellerGetOrdersByUserIdAndStatus(int pageNo, int pageSize, int userId, int status);
 
-    GeneralBean GetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize,int userId, int post_purpose);
+    GeneralBean SellerGetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize, int userId, int post_purpose);
+
+    GeneralBean BuyerGetOrdersByUserIdAndStatus(int pageNo, int pageSize, int userId, int status);
+
+    GeneralBean BuyerGetOrdersByUserIdAndPostPurpose(int pageNo, int pageSize, int userId, int post_purpose);
 
     GeneralBean CancelOrder(int orderId);
 

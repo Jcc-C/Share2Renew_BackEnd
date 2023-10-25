@@ -22,10 +22,13 @@ public interface OrderMapper extends BaseMapper<Order> {
     void UpdatePayStatus(String orderId);
     List<PostOrderInfo> GetOrderDetail(String orderId);
 
-    IPage<PostOrderInfo> GetOrderByUserIdAndPostPurpose(IPage<PostOrderInfo> page, int userId, int post_purpose);
+    IPage<PostOrderInfo> SellerGetOrderByUserIdAndPostPurpose(IPage<PostOrderInfo> page, int userId, int post_purpose);
 
-    IPage<PostOrderInfo> GetOrdersByUserIdAndStatus(IPage<PostOrderInfo> page, int userId, int order_status);
+    IPage<PostOrderInfo> SellerGetOrderByUserIdAndStatus(IPage<PostOrderInfo> page, int userId, int order_state);
 
+    IPage<PostOrderInfo> BuyerGetOrderByUserIdAndPostPurpose(IPage<PostOrderInfo> page, int userId, int post_purpose);
 
+    IPage<PostOrderInfo> BuyerGetOrderByUserIdAndStatus(IPage<PostOrderInfo> page, int userId, int order_state);
 
+    void CancelOrder(int orderId);
 }

@@ -90,22 +90,15 @@
 
     </select>
 
-    <select id="GetOrderByUserIdAndStatus" resultType="com.share2renew.pojo.PostOrderInfo">
-        SELECT o.*
-        FROM share2renew.t_order o
-        WHERE user_id = #{userId} AND order_state = #{order_state};
-    </select>
-
-
-    <select id="GetOrderByUserIdAndPostPurpose" resultType="com.share2renew.pojo.PostOrderInfo">
+    <select id="SellerGetOrderByUserIdAndStatus" resultType="com.share2renew.pojo.PostOrderInfo">
         SELECT
             p.post_id,
             p.post_title,
             p.post_purpose,
             p.price,
             p.category_id,
-            p.user_id as buyer_id,
-            o.user_id as seller_id,
+            o.buyer_id,
+            o.seller_id,
             o.order_id,
             o.order_mobile,
             o.order_address,
@@ -113,7 +106,75 @@
             o.order_state
         FROM share2renew.t_order o
         INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
-        WHERE o.user_id = #{userId} and p.post_purpose = #{post_purpose}
+        WHERE o.seller_id = #{userId} AND o.order_state = #{order_state};
+    </select>
+
+
+    <select id="SellerGetOrderByUserIdAndPostPurpose" resultType="com.share2renew.pojo.PostOrderInfo">
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            o.buyer_id,
+            o.seller_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
+        FROM share2renew.t_order o
+        INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
+        WHERE o.seller_id = #{userId} and p.post_purpose = #{post_purpose}
 
     </select>
+
+    <select id="BuyerGetOrderByUserIdAndStatus" resultType="com.share2renew.pojo.PostOrderInfo">
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            o.buyer_id,
+            o.seller_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
+        FROM share2renew.t_order o
+                 INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
+        WHERE o.buyer_id = #{userId} AND o.order_state = #{order_state};
+    </select>
+
+
+    <select id="BuyerGetOrderByUserIdAndPostPurpose" resultType="com.share2renew.pojo.PostOrderInfo">
+        SELECT
+            p.post_id,
+            p.post_title,
+            p.post_purpose,
+            p.price,
+            p.category_id,
+            o.buyer_id,
+            o.seller_id,
+            o.order_id,
+            o.order_mobile,
+            o.order_address,
+            o.tracking_id,
+            o.order_state
+        FROM share2renew.t_order o
+                 INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
+        WHERE o.buyer_id = #{userId} and p.post_purpose = #{post_purpose}
+
+    </select>
+
+    <select id="CancelOrder">
+        UPDATE share2renew.t_order
+        SET order_state = 3
+        WHERE order_id = #{orderId};
+    </select>
+
+
 </mapper>
