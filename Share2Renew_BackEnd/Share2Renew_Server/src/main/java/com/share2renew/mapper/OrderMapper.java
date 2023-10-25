@@ -16,9 +16,9 @@ import java.util.List;
  * @since 2023-09-07
  */
 public interface OrderMapper extends BaseMapper<Order> {
-    IPage<PostOrderInfo> GetAllOrSpecificByuserId(IPage<PostOrderInfo> page, int userId, String title);
+    IPage<PostOrderInfo> BuyerGetOrder(IPage<PostOrderInfo> page, int userId, String title);
 
-    IPage<PostOrderInfo> GetSoldOrSpecificByuserId(IPage<PostOrderInfo> page, int userId, String title);
+    IPage<PostOrderInfo> SellerGetOrder(IPage<PostOrderInfo> page, int userId, String title);
     void UpdatePayStatus(String orderId);
     List<PostOrderInfo> GetOrderDetail(String orderId);
 

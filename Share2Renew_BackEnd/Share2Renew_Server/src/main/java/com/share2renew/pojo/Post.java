@@ -50,7 +50,10 @@ public class Post implements Serializable {
     @TableField("user_id")
     private Integer userId;
 
-    @TableLogic(value = "1",delval = "0") //逻辑处理注解（逻辑删除）value = "1" 默认的原值，delval = "0" 删除后的值
+    //@TableLogic(value = "1",delval = "0") //逻辑处理注解（逻辑删除）value = "1" 默认的原值，delval = "0" 删除后的值
+    /**
+     * validity = "2" 商品已经出售 设置为不可购买 validity = "1" 商品有效但未出售  validity = "0" 被隐藏 即删除
+     */
     private Integer validity;
 
 
