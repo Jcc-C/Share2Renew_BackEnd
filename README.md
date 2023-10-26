@@ -6,8 +6,6 @@
 <p>2. Open the browser(Recommended Google Chrome)</p><br>
 <p>3. Input: http://localhost:8086/#/ </p><br>
 
-<h2>Libraries and Version</h2><br>
-
 ## Used Libraries and Versions
 
 - **Logback**:
@@ -154,6 +152,27 @@
 - `snakeyaml`: 1.28
 
 ## All working functionalities of the project
+  - Login
+  - AdminLogin
+  - Logout
+  - Register
+  - user update personal information
+  - user change password
+  - user upload avatar
+  - user create shipping address
+  - user update shipping address
+  - user delete shipping address
+  - Send Email to user after register
+  - RegisterAdmin(Just For initial the system)
+  - Get current admin information
+  - Modify post validity
+  - Modify user comment right
+  - user add post to favourite
+  - user delete post from favourite
+  - user create a post
+  - user upload post's images
+  - user delete post
+  - user like a post
 
 
 

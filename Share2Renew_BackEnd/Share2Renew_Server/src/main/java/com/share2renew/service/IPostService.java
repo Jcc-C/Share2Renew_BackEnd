@@ -33,4 +33,11 @@ public interface IPostService extends IService<Post> {
 
 
     GeneralBean GetPostDetail(Integer postId, Integer userId);
+
+    /**
+     * Delete post by user
+     * @param postId
+     * @return
+     */
+    GeneralBean deletePostByUser(Integer postId);
 }

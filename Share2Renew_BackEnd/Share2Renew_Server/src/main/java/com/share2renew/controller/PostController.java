@@ -117,5 +117,11 @@ public class PostController {
         return postService.GetPostDetail(postId,userId);
     }
 
+    @PostMapping("/deletePost")
+    @ApiOperation(value = "For user delete post")
+    public GeneralBean deletePstByUser(@RequestParam Integer postId) {
+        return postService.deletePostByUser(postId);
+    }
+
 
 }
