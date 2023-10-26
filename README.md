@@ -1,5 +1,5 @@
-# Share2Renew_BackEnd
-<h1>Share2Renew</h1><br>
+# Share2Renew
+<h1>Share2Renew_Back-end</h1><br>
 
 <h2>Run the application</h2>
 <p>1. Run the Share2Renew_Server</p><br>
@@ -170,9 +170,12 @@
   - user add post to favourite
   - user delete post from favourite
   - user create a post
+  - user update the post
   - user upload post's images
   - user delete post
   - user like a post
+  - user comment a post
+  - user delete a comment
 
 
 
