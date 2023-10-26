@@ -29,4 +29,11 @@ public interface ICommentService extends IService<Comment> {
      * @return
      */
     GeneralBean getAllCommentsByPostId(Integer postId);
+
+    /**
+     * Get user's avatar by comment
+     * @param commentId
+     * @return
+     */
+    String getUserAvatarByComment(Integer commentId);
 }

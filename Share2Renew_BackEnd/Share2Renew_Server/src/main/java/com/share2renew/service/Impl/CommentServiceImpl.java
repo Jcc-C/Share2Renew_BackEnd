@@ -2,9 +2,11 @@ package com.share2renew.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.share2renew.exception.ParamsException;
+import com.share2renew.mapper.UserMapper;
 import com.share2renew.pojo.Comment;
 import com.share2renew.mapper.CommentMapper;
 import com.share2renew.pojo.GeneralBean;
+import com.share2renew.pojo.User;
 import com.share2renew.service.ICommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.share2renew.service.IUserService;
@@ -30,6 +32,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     private CommentMapper commentMapper;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * Add a comment
@@ -67,5 +71,20 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             return GeneralBean.success(commentByPost);
         }
         return GeneralBean.error("Current post have no comment.");
+    }
+
+    /**
+     * Get user's avatar by comment
+     * @param commentId
+     * @return
+     */
+    @Override
+    public String getUserAvatarByComment(Integer commentId) {
+
+        Comment comment = commentMapper.selectById(commentId);
+        Integer userId = comment.getUserId();
+        User user = userMapper.selectById(userId);
+        String avatar = user.getAvatar();
+        return avatar;
     }
 }

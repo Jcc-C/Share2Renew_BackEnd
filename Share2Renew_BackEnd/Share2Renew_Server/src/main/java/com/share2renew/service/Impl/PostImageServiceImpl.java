@@ -1,5 +1,6 @@
 package com.share2renew.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.PostImage;
 import com.share2renew.mapper.PostImageMapper;
@@ -24,6 +25,8 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
 
     @Autowired
     private PostImageMapper postImageMapper;
+    @Autowired
+    private IPostImageService postImageService;
 
     /**
      * get all post images by userId
@@ -80,5 +83,46 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
             return GeneralBean.error("This post has no images");
         }
         return GeneralBean.error("Get images failed");
+    }
+
+    /**
+     * uploadPostImageOnce
+     * @param url
+     * @param postId
+     * @return
+     */
+    @Override
+    public GeneralBean uploadPostImageOnce(String url, Integer postId) {
+//        PostImage postImage = postImageMapper.selectById(postId);
+        PostImage imageObject = new PostImage();
+        long countPhoto = postImageService.count(new QueryWrapper<PostImage>().eq("post_id", postId));
+        if (countPhoto == 0){
+
+            imageObject.setPostId(postId);
+            imageObject.setImageUrl(url);
+            imageObject.setImageType(1);
+            imageObject.setValidity(1);
+
+            int result = postImageMapper.insert(imageObject);
+            if (result == 1) {
+                return GeneralBean.success("Upload image successfully!", url);
+            } else {
+                return GeneralBean.error("Upload image failed!");
+            }
+        } else if (countPhoto > 1 && countPhoto <= 5) {
+            imageObject.setImageUrl(url);
+            imageObject.setValidity(1);
+            imageObject.setImageType(2);
+            imageObject.setPostId(postId);
+
+            int result = postImageMapper.insert(imageObject);
+            if (result == 1) {
+                return GeneralBean.success("Upload image successfully!", url);
+            } else {
+                return GeneralBean.error("Upload image failed!");
+            }
+        } else {
+            return GeneralBean.error("Maximum Photo");
+        }
     }
 }

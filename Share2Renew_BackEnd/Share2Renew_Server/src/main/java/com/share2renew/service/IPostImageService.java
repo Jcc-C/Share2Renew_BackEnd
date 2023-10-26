@@ -32,4 +32,12 @@ public interface IPostImageService extends IService<PostImage> {
      * @return
      */
     GeneralBean getPostImageByPostIdReturnUrl(Integer postId);
+
+    /**
+     * uploadPostImageOnce
+     * @param url
+     * @param postId
+     * @return
+     */
+    GeneralBean uploadPostImageOnce(String url, Integer postId);
 }

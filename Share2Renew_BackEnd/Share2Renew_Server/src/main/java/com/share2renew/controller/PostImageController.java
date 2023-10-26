@@ -1,12 +1,15 @@
 package com.share2renew.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.share2renew.pojo.GeneralBean;
+import com.share2renew.pojo.PostImage;
 import com.share2renew.service.IPostImageService;
 import com.share2renew.util.FastDFSUtils;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -64,6 +67,26 @@ public class PostImageController {
             }
         }
         return postImageService.uploadPostImage(imageUrls, postId);
+    }
+
+    @ApiOperation(value = "upload photo once a time")
+    @PostMapping(value = "/uploadPostImageOnce", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public GeneralBean uploadPostImageOnce(@RequestParam MultipartFile file, @RequestParam Integer postId) {
+        //Upload file by FastDFS
+        String[] uploadPath = FastDFSUtils.upload(file);
+        //get the url
+        String url = FastDFSUtils.getTrackerUrl() + uploadPath[0] + "/" + uploadPath[1];
+
+        return postImageService.uploadPostImageOnce(url, postId);
+    }
+
+    @ApiOperation(value = "拿总数")
+    @PostMapping("/getImagesCount")
+    public GeneralBean getImagesCount(@RequestParam Integer postId) {
+        QueryWrapper<PostImage> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("post_id", postId);
+        Long count = postImageService.count(queryWrapper);
+        return GeneralBean.success(count);
     }
 
 }

@@ -37,6 +37,12 @@ public class CommentController {
         return commentService.getAllCommentsByPostId(postId);
     }
 
+    @ApiOperation(value = "get user' avatar by comment")
+    @PostMapping("/getUserAvatarByComment")
+    public String getUserAvatarByComment(@RequestParam Integer commentId) {
+        return commentService.getUserAvatarByComment(commentId);
+    }
+
 
 
 }
