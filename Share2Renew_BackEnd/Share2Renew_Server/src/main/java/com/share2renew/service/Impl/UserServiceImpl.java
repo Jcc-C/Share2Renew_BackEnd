@@ -24,6 +24,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -115,7 +116,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return
      */
     @Override
-    public GeneralBean register(User user) {
+    public GeneralBean register(User user) throws MessagingException, TemplateException, IOException {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         QueryWrapper<User> username = queryWrapper.eq("username", user.getUsername());
@@ -127,13 +128,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             user.setValidity(true);
             user.setRightToComment(1);
 
-            userMapper.insert(user);
-            return GeneralBean.success("Register successfully");
+            int resultInsert = userMapper.insert(user);
+            if (resultInsert == 1) {
+                sendEmailForRegister(user.getRealName(), user.getEmail());
+                return GeneralBean.success("Register successfully");
+            }
         } else if (user.getUsername() == null) {
             return GeneralBean.error("Please input username first.");
         } else {
             return GeneralBean.error("Username has been used, please try another one.");
         }
+        return GeneralBean.error("Register failed, please try again.");
     }
 
     /**
@@ -234,6 +239,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         helper.setTo("kevin.f.shen@foxmail.com");
         helper.setText(html, true);
         helper.setSubject("Welcome Mail");
+        helper.setFrom(senderEmail);
+
+        javaMailSender.send(mimeMessage);
+
+    }
+
+    public void sendEmailForRegister(String realName, String emailAddress) throws IOException, MessagingException, TemplateException {
+
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+
+        Template template = configuration.getTemplate("welcome.html");
+
+//        Context context = new Context();
+//        context.setVariable("realName", realName);
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("realName", realName);
+
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+
+        helper.setTo(emailAddress);
+        helper.setText(html, true);
+        helper.setSubject("Welcome Mail");
+
         helper.setFrom(senderEmail);
 
         javaMailSender.send(mimeMessage);

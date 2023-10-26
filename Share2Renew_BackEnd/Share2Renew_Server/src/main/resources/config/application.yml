@@ -11,6 +11,37 @@ spring:
     password: 12345678
     type: com.alibaba.druid.pool.DruidDataSource
 
+  mail:
+
+#    # 邮件服务器地址
+#    host: smtp.qq.com
+#    # 协议
+#    protocol: smtp
+#    # 编码格式
+#    default-encoding: utf-8
+#    # 授权码（在邮箱开通服务时获取）
+#    password: dpkvvhjwumkocagb
+#    # 发送者邮箱地址
+#    username: 347495739@qq.com
+#    # 端口（不同邮箱端口号不同）
+#    port: 25
+
+#
+    username: JimmyCJX@outlook.com
+    password:   #邮箱的登录密码 非授权码
+    host: smtp.office365.com
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
+
+
+
 
 ## Mybatis SQL 打印(方法接口所在的包，不是Mapper.xml所在的包)
 logging:

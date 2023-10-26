@@ -43,7 +43,7 @@ public interface IUserService extends IService<User> {
      * @param user
      * @return
      */
-    public GeneralBean register(User user);
+    public GeneralBean register(User user) throws MessagingException, TemplateException, IOException;
 
     /**
      * For user update password

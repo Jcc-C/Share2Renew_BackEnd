@@ -5,6 +5,7 @@ import com.share2renew.pojo.User;
 import com.share2renew.pojo.UserLoginInfo;
 import com.share2renew.service.IAdminService;
 import com.share2renew.service.IUserService;
+import freemarker.template.TemplateException;
 import io.ipinfo.api.IPinfo;
 import io.ipinfo.api.errors.RateLimitedException;
 import io.ipinfo.api.model.IPResponse;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.security.Principal;
 
 /**
@@ -86,7 +89,7 @@ public class LoginController {
      */
     @ApiOperation("Register")
     @PostMapping("/register")
-    public GeneralBean register(@RequestBody User user) {
+    public GeneralBean register(@RequestBody User user) throws MessagingException, TemplateException, IOException {
         return userService.register(user);
     }
 
