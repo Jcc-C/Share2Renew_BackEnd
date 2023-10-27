@@ -114,6 +114,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/css/**",
                 "/js/**",
                 "/index.html",
+                "/post/getAllPost",
                 "/doc.html",
                 "/webjars/**",
                 //"/category/**",
