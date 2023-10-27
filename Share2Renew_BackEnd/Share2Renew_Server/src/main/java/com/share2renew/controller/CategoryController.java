@@ -29,8 +29,8 @@ public class CategoryController {
     @ApiOperation(value = "get all the category")
     @GetMapping("/getAllCategory")
     public List<Category> getAllCategory(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
-        System.out.println("Received token: " + token);
+//        String token = request.getHeader("Authorization");
+//        System.out.println("Received token: " + token);
         return categoryService.list();
     }
 
