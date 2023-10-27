@@ -35,7 +35,6 @@ public interface IOrderService extends IService<Order> {
 
     GeneralBean CancelOrder(int orderId);
 
-    GeneralBean GetUserOrderCount(int userId);
 
 
 

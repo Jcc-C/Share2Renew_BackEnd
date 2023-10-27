@@ -149,10 +149,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         return GeneralBean.success("Cancel order successful");
     }
 
-    @Override
-    public GeneralBean GetUserOrderCount(int userId) {
-        return null;
-    }
 
 
 }
