@@ -115,7 +115,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/js/**",
                 "/index.html",
                 "/post/getAllPost",
-                "/post/getPostImageByPostIdReturnUrl",
+                "/post-image/getPostImageByPostIdReturnUrl",
                 "/doc.html",
                 "/webjars/**",
                 //"/category/**",
