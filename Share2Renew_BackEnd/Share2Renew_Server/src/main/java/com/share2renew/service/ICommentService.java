@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.share2renew.pojo.GeneralBean;
 import io.swagger.models.auth.In;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -21,7 +23,7 @@ public interface ICommentService extends IService<Comment> {
      * @param comment
      * @return
      */
-    GeneralBean addComment(Comment comment, Integer postId) throws ParamsException;
+    GeneralBean addComment(String commentContent, Integer postId) throws ParamsException;
 
     /**
      * Get all comments by postId
@@ -36,4 +38,18 @@ public interface ICommentService extends IService<Comment> {
      * @return
      */
     String getUserAvatarByComment(Integer commentId);
+
+    /**
+     * Get all comments by username
+     * @param username
+     * @return
+     */
+    GeneralBean getAllCommentsByUsername(String username);
+
+    /**
+     * Delete a comment
+     * @param commentId
+     * @return
+     */
+    GeneralBean deleteComment(Integer commentId);
 }

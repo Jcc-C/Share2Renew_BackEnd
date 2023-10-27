@@ -23,7 +23,7 @@ public class FavouritePostController {
 
     @PostMapping("/addTofavourite")
     @ApiOperation("Add a post to favourite")
-    public GeneralBean AddTofavourite(@RequestParam(value = "userId") Integer userId,
+    public GeneralBean AddToFavourite(@RequestParam(value = "userId") Integer userId,
                                       @RequestParam(value = "postId") Integer postId){
         return iFavouritePostService.AddTofavourite(userId,postId);
     }

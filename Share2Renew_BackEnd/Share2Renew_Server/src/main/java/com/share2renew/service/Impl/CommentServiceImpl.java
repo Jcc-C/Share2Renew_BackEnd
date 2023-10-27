@@ -42,11 +42,13 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
      * @return
      */
     @Override
-    public GeneralBean addComment(Comment comment, Integer postId) throws ParamsException {
+    public GeneralBean addComment(String commentContent, Integer postId) throws ParamsException {
 
         // Get the current userId
         int currentUserId = userService.getCurrentUserId();
+        Comment comment = new Comment();
         comment.setUserId(currentUserId);
+        comment.setCommentDetail(commentContent);
         comment.setPostId(postId);
         comment.setCommentDate(new Date());
         comment.setLikes(0);
@@ -86,5 +88,41 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         User user = userMapper.selectById(userId);
         String avatar = user.getAvatar();
         return avatar;
+    }
+
+    /**
+     * Get all comments by username
+     * @param username
+     * @return
+     */
+    @Override
+    public GeneralBean getAllCommentsByUsername(String username) {
+
+        User user = userService.getUserByUserName(username);
+        Integer userId = user.getUserId();
+
+        List<Comment> commentList = commentMapper.selectList(new QueryWrapper<Comment>().eq("user_id", userId));
+        if (commentList.size() >= 1) {
+            return GeneralBean.success(commentList);
+        } else {
+            return GeneralBean.error("No comment found.");
+        }
+    }
+
+    /**
+     * Delete a comment
+     * @param commentId
+     * @return
+     */
+    @Override
+    public GeneralBean deleteComment(Integer commentId) {
+
+        Comment comment = commentMapper.selectById(commentId);
+        comment.setValidity(0);
+        int result = commentMapper.insert(comment);
+        if (result == 1) {
+            return GeneralBean.success("Delete comment successfully.");
+        }
+        return GeneralBean.error("Delete comment failed! Please try again.");
     }
 }

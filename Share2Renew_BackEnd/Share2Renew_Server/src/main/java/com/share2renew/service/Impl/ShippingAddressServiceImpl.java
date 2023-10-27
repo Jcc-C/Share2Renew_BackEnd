@@ -38,7 +38,6 @@ public class ShippingAddressServiceImpl extends ServiceImpl<ShippingAddressMappe
     @Override
     public GeneralBean addShippingAddress(ShippingAddress shippingAddress) throws ParamsException {
 
-        // 前端完成所有健壮性判断
         // Set the validity
         shippingAddress.setValidity(1);
         // Get current userId

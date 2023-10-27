@@ -124,4 +124,16 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
         data.put("postDetail", postMapper.selectById(postId));
         return GeneralBean.success(data);
     }
+
+    @Override
+    public GeneralBean deletePostByUser(Integer postId) {
+
+        Post post = postMapper.selectById(postId);
+        post.setValidity(0);
+        int result = postMapper.updateById(post);
+        if (result == 1) {
+            return GeneralBean.success("Delete post successfully.");
+        }
+        return GeneralBean.error("Delete post failed! Please try again.");
+    }
 }
