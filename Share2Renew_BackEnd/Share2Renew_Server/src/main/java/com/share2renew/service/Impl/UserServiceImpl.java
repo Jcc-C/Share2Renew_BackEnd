@@ -11,6 +11,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import io.ipinfo.api.IPinfo;
+import io.ipinfo.api.errors.RateLimitedException;
+import io.ipinfo.api.model.IPResponse;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -24,6 +28,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
@@ -61,6 +67,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private String senderEmail;
     @Autowired
     private Configuration configuration;
+    private static final String GET_IP_INFO_URL = "http://ipinfo.io/ip";
+    @Autowired
+    private RestTemplate restTemplate;
 
     /**
      * return token after login
@@ -70,7 +79,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return
      */
     @Override
-    public GeneralBean login(String username, String password, HttpServletRequest request) {
+    public GeneralBean login(String username, String password, HttpServletRequest request) throws RateLimitedException {
         //Login
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
@@ -96,6 +105,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
 
+        String ipInfo = getIpInfo(request);
+        User currentUser = getUserByUserName(username);
+        currentUser.setLocation(ipInfo);
+        userMapper.updateById(currentUser);
+
         return GeneralBean.success("Login successfully", tokenMap);
     }
 
@@ -116,7 +130,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return
      */
     @Override
-    public GeneralBean register(User user) throws MessagingException, TemplateException, IOException {
+    public GeneralBean register(User user, HttpServletRequest request) throws MessagingException, TemplateException, IOException, RateLimitedException {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         QueryWrapper<User> username = queryWrapper.eq("username", user.getUsername());
@@ -128,6 +142,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             user.setValidity(true);
             user.setRightToComment(1);
 
+            String ipInfo = getIpInfo(request);
+            user.setLocation(ipInfo);
+
+            //Get user current location
             int resultInsert = userMapper.insert(user);
             if (resultInsert == 1) {
                 sendEmailForRegister(user.getRealName(), user.getEmail());
@@ -139,6 +157,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return GeneralBean.error("Username has been used, please try another one.");
         }
         return GeneralBean.error("Register failed, please try again.");
+    }
+
+    public String getIpInfo(HttpServletRequest request) throws RateLimitedException {
+        IPinfo iPinfo = new IPinfo.Builder().setToken("94fa75aedcef6d").build();
+
+        String ipAddress = restTemplate.getForObject(GET_IP_INFO_URL, String.class).trim();
+
+        IPResponse ipResponse = iPinfo.lookupIP(ipAddress);
+        String countryCode = ipResponse.getCountryCode();
+        String region = ipResponse.getRegion();
+        String ip = ipResponse.getIp();
+        String city = ipResponse.getCity();
+        return city + "/" + region + "/" + countryCode;
     }
 
     /**

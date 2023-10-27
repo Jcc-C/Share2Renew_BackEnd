@@ -5,6 +5,7 @@ import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import freemarker.template.TemplateException;
+import io.ipinfo.api.errors.RateLimitedException;
 import org.springframework.security.core.Authentication;
 
 import javax.mail.MessagingException;
@@ -29,7 +30,7 @@ public interface IUserService extends IService<User> {
      * @param request
      * @return
      */
-    public GeneralBean login(String username, String password, HttpServletRequest request);
+    public GeneralBean login(String username, String password, HttpServletRequest request) throws RateLimitedException;
 
     /**
      * Get the user info by username
@@ -43,7 +44,7 @@ public interface IUserService extends IService<User> {
      * @param user
      * @return
      */
-    public GeneralBean register(User user) throws MessagingException, TemplateException, IOException;
+    public GeneralBean register(User user, HttpServletRequest request) throws MessagingException, TemplateException, IOException, RateLimitedException;
 
     /**
      * For user update password

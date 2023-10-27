@@ -47,7 +47,7 @@ public class LoginController {
 
     @ApiOperation(value = "Login then return token")
     @PostMapping("/login")
-    public GeneralBean login(@RequestBody UserLoginInfo userLoginInfo, HttpServletRequest request) {
+    public GeneralBean login(@RequestBody UserLoginInfo userLoginInfo, HttpServletRequest request) throws RateLimitedException {
         return userService.login(userLoginInfo.getUsername(), userLoginInfo.getPassword(), request);
     }
 
@@ -89,8 +89,8 @@ public class LoginController {
      */
     @ApiOperation("Register")
     @PostMapping("/register")
-    public GeneralBean register(@RequestBody User user) throws MessagingException, TemplateException, IOException {
-        return userService.register(user);
+    public GeneralBean register(@RequestBody User user, HttpServletRequest request) throws MessagingException, TemplateException, IOException, RateLimitedException {
+        return userService.register(user, request);
     }
 
     //TODO: 用这个api得到登陆信息, 创建多一个表用于给管理员查看登陆信息

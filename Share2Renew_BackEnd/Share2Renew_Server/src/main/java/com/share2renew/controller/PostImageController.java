@@ -70,7 +70,7 @@ public class PostImageController {
     }
 
     @ApiOperation(value = "upload photo once a time")
-    @PostMapping(value = "/uploadPostImageOnce", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/uploadPostImageOnce")
     public GeneralBean uploadPostImageOnce(@RequestParam MultipartFile file, @RequestParam Integer postId) {
         //Upload file by FastDFS
         String[] uploadPath = FastDFSUtils.upload(file);
