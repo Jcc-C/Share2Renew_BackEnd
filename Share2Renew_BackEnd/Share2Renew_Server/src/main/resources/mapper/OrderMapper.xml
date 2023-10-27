@@ -86,7 +86,7 @@
             o.order_state
         FROM
             share2renew.t_post p, share2renew.t_order o
-        WHERE o.seller_id = #{userId} AND p.user_id = #{userId} AND p.post_title like #{pattern}
+        WHERE o.buyer_id = #{userId} AND p.user_id = #{userId} AND p.post_title like #{pattern}
 
     </select>
 

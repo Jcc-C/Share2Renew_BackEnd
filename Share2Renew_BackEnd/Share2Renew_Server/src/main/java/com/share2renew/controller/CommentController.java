@@ -65,6 +65,18 @@ public class CommentController {
         return commentService.deleteComment(commentId);
     }
 
+    @ApiOperation(value = "like a comment")
+    @PostMapping("/likeComment")
+    public GeneralBean likeComment(@RequestParam Integer commentId) {
+        return commentService.likeComment(commentId);
+    }
+
+    @ApiOperation(value = "Cancel like a comment")
+    @PostMapping("/CancelLikeComment")
+    public GeneralBean CancelLike(@RequestParam Integer commentId) {
+        return commentService.UnlikeComment(commentId);
+    }
+
 
 
 

@@ -125,4 +125,39 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
         return GeneralBean.error("Delete comment failed! Please try again.");
     }
+
+    @Override
+    public GeneralBean likeComment(Integer commentId) {
+
+        //return the amount of like
+        Comment comment = commentMapper.selectById(commentId);
+        Integer currentLikes = comment.getLikes();
+        comment.setLikes(currentLikes + 1);
+        int result = commentMapper.updateById(comment);
+        if (result == 1) {
+            return GeneralBean.success("Like success.");
+        }
+        return GeneralBean.error("Like failed, please try again.");
+    }
+
+    @Override
+    public GeneralBean UnlikeComment(Integer commentId) {
+
+        //return the amount of like
+        Comment comment = commentMapper.selectById(commentId);
+        Integer currentLikes = comment.getLikes();
+        if (currentLikes > 0) {
+            comment.setLikes(currentLikes - 1);
+            int result = commentMapper.updateById(comment);
+            if (result == 1) {
+                return GeneralBean.success("Cancel like success.");
+            }
+            else {
+                return GeneralBean.error("Cancel like failed, please try again.");
+            }
+        }
+        else {
+            return GeneralBean.success("Like Reach to zero");
+        }
+    }
 }
