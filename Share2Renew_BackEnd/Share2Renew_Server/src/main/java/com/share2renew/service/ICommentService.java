@@ -52,4 +52,8 @@ public interface ICommentService extends IService<Comment> {
      * @return
      */
     GeneralBean deleteComment(Integer commentId);
+
+    GeneralBean likeComment(Integer commentId);
+
+    GeneralBean UnlikeComment(Integer commentId);
 }
