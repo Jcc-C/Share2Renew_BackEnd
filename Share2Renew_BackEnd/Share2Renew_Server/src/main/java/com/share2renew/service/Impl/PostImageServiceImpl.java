@@ -109,7 +109,7 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
             } else {
                 return GeneralBean.error("Upload image failed!");
             }
-        } else if (countPhoto > 1 && countPhoto <= 5) {
+        } else if (countPhoto >= 1 && countPhoto <= 5) {
             imageObject.setImageUrl(url);
             imageObject.setValidity(1);
             imageObject.setImageType(2);
