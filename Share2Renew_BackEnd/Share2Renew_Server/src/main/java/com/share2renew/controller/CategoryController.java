@@ -25,8 +25,7 @@ public class CategoryController {
 
     @Autowired
     private ICategoryService categoryService;
-
-    //TODO: 做一个可以搜索的
+    
     @ApiOperation(value = "get all the category")
     @GetMapping("/getAllCategory")
     public List<Category> getAllCategory(HttpServletRequest request) {

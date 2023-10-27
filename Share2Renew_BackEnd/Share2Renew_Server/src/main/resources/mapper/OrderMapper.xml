@@ -106,7 +106,7 @@
             o.order_state
         FROM share2renew.t_order o
         INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
-        WHERE o.seller_id = #{userId} AND o.order_state = #{order_state};
+        WHERE o.seller_id = #{userId} AND o.order_state = #{order_state}
     </select>
 
 
@@ -146,7 +146,7 @@
             o.order_state
         FROM share2renew.t_order o
                  INNER JOIN share2renew.t_post p ON o.post_id = p.post_id
-        WHERE o.buyer_id = #{userId} AND o.order_state = #{order_state};
+        WHERE o.buyer_id = #{userId} AND o.order_state = #{order_state}
     </select>
 
 
