@@ -4,6 +4,8 @@ import com.share2renew.pojo.Post;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -16,4 +18,5 @@ import org.springframework.stereotype.Repository;
 public interface PostMapper extends BaseMapper<Post> {
     int GetPostId ();
 
+    List<Post> getAllPost();
 }

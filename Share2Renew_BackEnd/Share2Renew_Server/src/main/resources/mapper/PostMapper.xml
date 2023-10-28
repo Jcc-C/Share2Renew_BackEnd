@@ -24,4 +24,10 @@
         SELECT LAST_INSERT_ID()
     </select>
 
+    <select id="getAllPost" resultType="com.share2renew.pojo.Post">
+        select *
+        from t_post
+        where validity = 1
+    </select>
+
 </mapper>

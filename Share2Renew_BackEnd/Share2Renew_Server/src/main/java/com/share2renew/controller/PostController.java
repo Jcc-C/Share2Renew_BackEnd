@@ -51,7 +51,7 @@ public class PostController {
     @GetMapping("/getAllPost")
     @ApiOperation(value = "get all post")
     public List<Post> getAllPost() {
-        return postService.list();
+        return postService.getAllPost();
     }
 
     @PostMapping("/createNewPost")

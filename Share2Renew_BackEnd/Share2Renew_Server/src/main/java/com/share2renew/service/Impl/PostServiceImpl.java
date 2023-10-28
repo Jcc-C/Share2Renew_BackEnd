@@ -45,7 +45,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     public GeneralBean getAllOrSpecificPost(int pageNo, int pageSize, String title, Integer categoryId) {
         LambdaQueryWrapper<Post> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(StringUtils.hasLength(title), Post::getPostTitle,title); //条件查询
-        wrapper.eq(categoryId !=null, Post::getCategoryId, categoryId);
+        wrapper.eq(categoryId !=null, Post::getCategoryId, categoryId).eq(Post::getValidity,1);
         Page<Post> page = new Page<>(pageNo, pageSize);
         postService.page(page,wrapper);
 
@@ -73,7 +73,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public GeneralBean getPostByCategory(int pageNo, int pageSize, int categoryId) {
         LambdaQueryWrapper<Post> wapper = new LambdaQueryWrapper<Post>();
-        wapper.eq(Post::getCategoryId,categoryId);
+        wapper.eq(Post::getCategoryId,categoryId).eq(Post::getValidity,1);
 
         Page<Post> page = new Page<>(pageNo, pageSize);
         postMapper.selectPage(page,wapper);
@@ -101,7 +101,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public GeneralBean getPostByPostPurpose(int pageNo, int pageSize, int postPurpose) {
         LambdaQueryWrapper<Post> wapper = new LambdaQueryWrapper<Post>();
-        wapper.eq(Post::getPostPurpose,postPurpose);
+        wapper.eq(Post::getPostPurpose,postPurpose).eq(Post::getValidity,1);
 
         Page<Post> page = new Page<>(pageNo, pageSize);
         postMapper.selectPage(page,wapper);
@@ -134,5 +134,14 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
             return GeneralBean.success("Delete post successfully.");
         }
         return GeneralBean.error("Delete post failed! Please try again.");
+    }
+
+    /**
+     * Get all post
+     * @return
+     */
+    @Override
+    public List<Post> getAllPost() {
+        return postMapper.getAllPost();
     }
 }

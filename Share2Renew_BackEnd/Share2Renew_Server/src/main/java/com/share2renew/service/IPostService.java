@@ -4,6 +4,8 @@ import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.Post;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -79,4 +81,10 @@ public interface IPostService extends IService<Post> {
      * @return
      */
     GeneralBean deletePostByUser(Integer postId);
+
+    /**
+     * Get all post
+     * @return
+     */
+    List<Post> getAllPost();
 }
