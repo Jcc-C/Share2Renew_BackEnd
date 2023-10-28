@@ -87,7 +87,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public GeneralBean getPostByUserId(int pageNo, int pageSize, int userId) {
         LambdaQueryWrapper<Post> wapper = new LambdaQueryWrapper<Post>();
-        wapper.eq(Post::getUserId,userId);
+        wapper.eq(Post::getUserId,userId).eq(Post::getValidity,1);
 
         Page<Post> page = new Page<>(pageNo, pageSize);
         postMapper.selectPage(page,wapper);
