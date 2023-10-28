@@ -42,4 +42,11 @@ public interface IPostImageService extends IService<PostImage> {
     GeneralBean uploadPostImageOnce(String url, Integer postId);
 
     GeneralBean updateImage(String url, Integer postImageId);
+
+    /**
+     * delete image
+     * @param postImageId
+     * @return
+     */
+    GeneralBean deleteImage(Integer postImageId);
 }

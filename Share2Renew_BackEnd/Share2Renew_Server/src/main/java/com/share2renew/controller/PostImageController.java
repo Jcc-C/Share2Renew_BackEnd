@@ -94,6 +94,12 @@ public class PostImageController {
         return postImageService.uploadPostImage(imageUrls, postId);
     }
 
+    @PostMapping("/deleteImage")
+    @ApiOperation(value = "delete image")
+    public GeneralBean deleteImage(@RequestParam Integer postImageId) {
+        return postImageService.deleteImage(postImageId);
+    }
+
     @ApiOperation(value = "upload photo once a time")
     @PostMapping(value = "/uploadPostImageOnce")
     public GeneralBean uploadPostImageOnce(@RequestParam MultipartFile file, @RequestParam Integer postId) {

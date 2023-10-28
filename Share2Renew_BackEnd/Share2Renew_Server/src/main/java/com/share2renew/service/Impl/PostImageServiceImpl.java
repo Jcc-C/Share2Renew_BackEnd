@@ -107,7 +107,8 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
 
             int result = postImageMapper.insert(imageObject);
             if (result == 1) {
-                return GeneralBean.success("Upload image successfully!", url);
+                //修改了返回postImageId
+                return GeneralBean.success("Upload image successfully!", imageObject.getPostImageId());
             } else {
                 return GeneralBean.error("Upload image failed!");
             }
@@ -119,7 +120,8 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
 
             int result = postImageMapper.insert(imageObject);
             if (result == 1) {
-                return GeneralBean.success("Upload image successfully!", url);
+                //修改了返回postImageId
+                return GeneralBean.success("Upload image successfully!", imageObject.getPostImageId());
             } else {
                 return GeneralBean.error("Upload image failed!");
             }
@@ -153,6 +155,25 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
             }
         }
         return GeneralBean.error("Update image failed!");
+    }
+
+    /**
+     * delete image
+     * @param postImageId
+     * @return
+     */
+    @Override
+    public GeneralBean deleteImage(Integer postImageId) {
+
+        PostImage postImage = postImageMapper.selectById(postImageId);
+        String imageUrl = postImage.getImageUrl();
+        String[] strings = filterFastDFS(imageUrl);
+        FastDFSUtils.deleteFile(strings[0], strings[1]);
+        int result = postImageMapper.updateById(postImage);
+        if (result == 1) {
+            return GeneralBean.success("Delete image successfully!");
+        }
+        return GeneralBean.error("Delete image failed!");
     }
 
     public String[] filterFastDFS(String url){
