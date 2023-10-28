@@ -169,6 +169,7 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
         String imageUrl = postImage.getImageUrl();
         String[] strings = filterFastDFS(imageUrl);
         FastDFSUtils.deleteFile(strings[0], strings[1]);
+        postImage.setImageUrl(null);
         int result = postImageMapper.updateById(postImage);
         if (result == 1) {
             return GeneralBean.success("Delete image successfully!");
