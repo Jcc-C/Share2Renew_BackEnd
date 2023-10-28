@@ -175,7 +175,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return
      */
     @Override
-    public GeneralBean updatePassword(Map<String, Object> userInfo) {
+    public GeneralBean updatePassword(Map<String, Object> userInfo) throws MessagingException, TemplateException, IOException {
         // Access user information including password and userId
         String previousPass = (String) userInfo.get("previousPass");
         String newPass = (String) userInfo.get("newPass");
@@ -191,6 +191,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             // Update the user information to the database
             int result = userMapper.updateById(user);
             if (result == 1) {
+                sendEmailForPasswordChange(user);
                 return GeneralBean.success("Password update successfully.");
             }
         }
@@ -288,6 +289,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         helper.setTo(emailAddress);
         helper.setText(html, true);
         helper.setSubject("Welcome Mail");
+
+        helper.setFrom(senderEmail);
+
+        javaMailSender.send(mimeMessage);
+
+    }
+
+    public void sendEmailForPasswordChange(User user) throws IOException, MessagingException, TemplateException {
+
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+
+        Template template = configuration.getTemplate("password.html");
+
+        String realName = user.getRealName();
+        String emailAddress = user.getEmail();
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("realName", realName);
+
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+
+        helper.setTo(emailAddress);
+        helper.setText(html, true);
+        helper.setSubject("Password has been changed");
 
         helper.setFrom(senderEmail);
 

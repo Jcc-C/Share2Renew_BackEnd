@@ -5,6 +5,7 @@ import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.User;
 import com.share2renew.service.IUserService;
 import com.share2renew.util.FastDFSUtils;
+import freemarker.template.TemplateException;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.jws.soap.SOAPBinding;
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +42,7 @@ public class UserController {
      */
     @ApiOperation(value = "Update Password")
     @PostMapping("/updatePassword")
-    public GeneralBean updatePassword(@RequestBody Map<String, Object> userInfo) {
+    public GeneralBean updatePassword(@RequestBody Map<String, Object> userInfo) throws MessagingException, TemplateException, IOException {
         return userService.updatePassword(userInfo);
     }
 

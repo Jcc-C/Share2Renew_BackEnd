@@ -51,7 +51,7 @@ public interface IUserService extends IService<User> {
      * @param userInfo
      * @return
      */
-    public GeneralBean updatePassword(Map<String, Object> userInfo);
+    public GeneralBean updatePassword(Map<String, Object> userInfo) throws MessagingException, TemplateException, IOException;
 
     /**
      * Get current userId
