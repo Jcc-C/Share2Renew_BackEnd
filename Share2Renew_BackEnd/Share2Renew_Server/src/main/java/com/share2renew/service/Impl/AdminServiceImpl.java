@@ -90,9 +90,6 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         return postMapper.selectList(new QueryWrapper<Post>());
     }
 
-
-
-    //TODO: 这个更新方法有问题，要改 - 不是new，是先去select user再对那个user修改
     @Override
     public void modifyUserValidity(int userId, boolean validity) {
 

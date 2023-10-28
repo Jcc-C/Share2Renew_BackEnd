@@ -33,7 +33,6 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Autowired
     private PostMapper postMapper;
 
-
     /**
      *
      * @param pageNo 第几页 必须输入
@@ -64,7 +63,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     }
 
     @Override
-    public GeneralBean updatepost(Post post) {
+    public GeneralBean updatePost(Post post) {
         post.setValidity(1);
         postMapper.updateById(post);
         return GeneralBean.success("Update post successfully");

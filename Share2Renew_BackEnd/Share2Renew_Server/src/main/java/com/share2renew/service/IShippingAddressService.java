@@ -24,9 +24,24 @@ public interface IShippingAddressService extends IService<ShippingAddress> {
      */
     GeneralBean addShippingAddress(ShippingAddress shippingAddress) throws ParamsException;
 
+    /**
+     * For updating shipping information
+     * @param shippingAddress
+     * @return
+     */
     GeneralBean updateShippingAddress(ShippingAddress shippingAddress);
 
+    /**
+     * For deleting shipping information
+     * @param addressId
+     * @return
+     */
     GeneralBean deleteShippingAddress(int addressId);
 
+    /**
+     * For getting shipping information by userId
+     * @param userId
+     * @return
+     */
     GeneralBean GetAddressByUserId(Integer userId);
 }

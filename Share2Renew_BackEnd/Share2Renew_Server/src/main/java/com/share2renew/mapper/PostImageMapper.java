@@ -16,11 +16,16 @@ import java.util.List;
 public interface PostImageMapper extends BaseMapper<PostImage> {
 
     /**
-     *
+     * get post image by post id
      * @param postId
      * @return
      */
     List<PostImage> getPostImageByPostId(Integer postId);
 
+    /**
+     * get post image url by post id
+     * @param postId
+     * @return
+     */
     List<String> getPostImageByPostIdReturnUrl(Integer postId);
 }

@@ -1,23 +1,15 @@
 package com.share2renew.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.share2renew.pojo.GeneralBean;
 import com.share2renew.pojo.Post;
 import com.share2renew.service.IPostService;
-import com.share2renew.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -88,7 +80,7 @@ public class PostController {
     @PutMapping("/updatePost")
     @ApiOperation(value = "Update a post")
     public GeneralBean UpdatePost(@RequestBody Post post){
-        return postService.updatepost(post);
+        return postService.updatePost(post);
     }
 
     @PutMapping("/updatePostByPostId")

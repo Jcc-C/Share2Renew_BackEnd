@@ -20,7 +20,7 @@ public interface ICommentService extends IService<Comment> {
 
     /**
      * Add a comment
-     * @param comment
+     * @param commentContent
      * @return
      */
     GeneralBean addComment(String commentContent, Integer postId) throws ParamsException;

@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 
 /**
  * @className: IpUtils
- * @description: 获取IP方法
+ * @description: Get the ip information
  * @author Lx
  * @date 2021/4/8 22:18
  */

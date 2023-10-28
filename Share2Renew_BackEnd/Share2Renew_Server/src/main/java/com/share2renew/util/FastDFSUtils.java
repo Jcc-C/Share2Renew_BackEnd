@@ -20,8 +20,7 @@ public class FastDFSUtils {
     private static Logger logger = LoggerFactory.getLogger(FastDFSUtils.class);
 
     /**
-     * 初始化客户端
-     * ClientGlobal.init 读取配置文件，并初始化对应的属性
+     * Initialize the FastDFS Client
      */
     static {
         try {
@@ -33,7 +32,7 @@ public class FastDFSUtils {
     }
 
     /**
-     * 上传文件
+     * Upload file
      *
      * @param file
      * @return
@@ -59,7 +58,7 @@ public class FastDFSUtils {
     }
 
     /**
-     * 获取文件信息
+     * Get the file info
      *
      * @param groupName
      * @param remoteFileName
@@ -77,7 +76,7 @@ public class FastDFSUtils {
     }
 
     /**
-     * 下载文件
+     * Download file
      *
      * @param groupName
      * @param remoteFileName
@@ -97,7 +96,7 @@ public class FastDFSUtils {
     }
 
     /**
-     * 删除文件
+     * Delete file
      *
      * @param groupName
      * @param remoteFileName
@@ -114,7 +113,7 @@ public class FastDFSUtils {
 
 
     /**
-     * 生成storage客户端
+     * Generate storage server
      *
      * @return
      * @throws IOException
@@ -127,7 +126,7 @@ public class FastDFSUtils {
 
 
     /**
-     * 生成tracker服务器
+     * Generate tracker server
      *
      * @return
      * @throws IOException
@@ -140,7 +139,7 @@ public class FastDFSUtils {
 
 
     /**
-     * 获取文件路径
+     * Get the file's path
      *
      * @return
      */

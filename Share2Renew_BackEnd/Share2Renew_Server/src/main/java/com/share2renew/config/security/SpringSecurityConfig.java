@@ -2,7 +2,6 @@ package com.share2renew.config.security;
 
 import com.share2renew.config.security.filter.JwtAuthenticationTokenFilter;
 import com.share2renew.config.security.filter.RestAuthorizationEntryPoint;
-import com.share2renew.config.security.filter.RestfulAccessDeniedHandler;
 import com.share2renew.pojo.Admin;
 import com.share2renew.pojo.User;
 import com.share2renew.service.IAdminService;
@@ -10,24 +9,15 @@ import com.share2renew.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
-
-import java.util.Arrays;
 
 /**
  * @program: Share2Renew_BackEnd
@@ -44,8 +34,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private IAdminService adminService;
     @Autowired
     private RestAuthorizationEntryPoint restAuthorizationEntryPoint;
-    @Autowired
-    private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
 
     //执行自己重写的UserDetailsService，通过getUserByUserName获取用户名
     @Override
@@ -96,7 +84,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         // Add custom unauthorised and return for login results
         http.exceptionHandling()
-                .accessDeniedHandler(restfulAccessDeniedHandler)
                 .authenticationEntryPoint(restAuthorizationEntryPoint);
     }
 

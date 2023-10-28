@@ -37,7 +37,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
 
     /**
      * Add a comment
-     * @param comment
+     * @param commentContent
      * @param postId
      * @return
      */

@@ -76,5 +76,11 @@ public interface IUserService extends IService<User> {
      */
     GeneralBean updateUserAvatar(String url, Integer userId, Authentication authentication);
 
+    /**
+     * Send email
+     * @throws IOException
+     * @throws MessagingException
+     * @throws TemplateException
+     */
     void sendEmail() throws IOException, MessagingException, TemplateException;
 }

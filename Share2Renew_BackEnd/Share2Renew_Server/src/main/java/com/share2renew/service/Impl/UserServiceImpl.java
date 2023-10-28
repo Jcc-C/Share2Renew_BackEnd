@@ -91,10 +91,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return GeneralBean.error("Current account is disabled!");
         }
         //Update user info
-//        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-//        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
-        //todo: 1-7
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails
                 ,null,userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
@@ -283,9 +280,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         Template template = configuration.getTemplate("welcome.html");
 
-//        Context context = new Context();
-//        context.setVariable("realName", realName);
-
         Map<String, Object> model = new HashMap<>();
         model.put("realName", realName);
 
@@ -298,7 +292,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         helper.setFrom(senderEmail);
 
         javaMailSender.send(mimeMessage);
-
 
     }
 }
