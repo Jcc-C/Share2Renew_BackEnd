@@ -6,10 +6,12 @@ import com.share2renew.pojo.PostImage;
 import com.share2renew.mapper.PostImageMapper;
 import com.share2renew.service.IPostImageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.share2renew.util.FastDFSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -109,7 +111,7 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
             } else {
                 return GeneralBean.error("Upload image failed!");
             }
-        } else if (countPhoto >= 1 && countPhoto <= 5) {
+        } else if (countPhoto >= 1 && countPhoto < 5) {
             imageObject.setImageUrl(url);
             imageObject.setValidity(1);
             imageObject.setImageType(2);
@@ -124,5 +126,51 @@ public class PostImageServiceImpl extends ServiceImpl<PostImageMapper, PostImage
         } else {
             return GeneralBean.error("Maximum Photo");
         }
+    }
+
+    /**
+     * update image
+     * @param url
+     * @param postImageId
+     * @return
+     */
+    @Override
+    public GeneralBean updateImage(String url, Integer postImageId) {
+
+        PostImage postImage = postImageMapper.selectById(postImageId);
+        if (postImage != null) {
+
+            String originalImageUrl = postImage.getImageUrl();
+
+            String[] fastDFS = filterFastDFS(originalImageUrl);
+
+            FastDFSUtils.deleteFile(fastDFS[0], fastDFS[1]);
+
+            postImage.setImageUrl(url);
+            int result = postImageMapper.updateById(postImage);
+            if (result == 1) {
+                return GeneralBean.success("Update image successfully!", url);
+            }
+        }
+        return GeneralBean.error("Update image failed!");
+    }
+
+    public String[] filterFastDFS(String url){
+
+        String[] result = new String[2];
+
+        String[] parts = url.split("/", 5);
+
+        String groupName = parts[3];
+        String remoteFileName = parts[4];
+
+        System.out.println("groupName: " + groupName);
+        System.out.println("remoteFileName: " + remoteFileName);
+
+        result[0] = groupName;
+        result[1] = remoteFileName;
+
+        return result;
+
     }
 }

@@ -32,7 +32,7 @@ public class PostImageController {
     private IPostImageService postImageService;
 
 //    @GetMapping("/getPostImageByPostId")
-//    @ApiOperation(value = "get all post imageFiles by userId")
+//    @ApiOperation(value = "get all post image by userId")
 //    public GeneralBean getPostImageByUserId(@RequestParam Integer postId) {
 //        return postImageService.getPostImageByUserId(postId);
 //    }
@@ -47,6 +47,31 @@ public class PostImageController {
     public GeneralBean getPostImageByPostIdReturnUrl(@RequestParam Integer postId) {
         return postImageService.getPostImageByPostIdReturnUrl(postId);
     }
+
+    //返回image对象
+    @GetMapping("/getAllImageByPostIdReturnObject")
+    @ApiOperation(value = "get all post images by postId return object")
+    public List<PostImage> getAllImageByPostIdReturnObject(@RequestParam Integer postId) {
+        List<PostImage> postImageList = postImageService.list(new QueryWrapper<PostImage>().eq("post_id", postId));
+        if (postImageList.size() != 0) {
+            return postImageList;
+        }else {
+            return null;
+        }
+    }
+
+    @PostMapping("/updateImage")
+    @ApiOperation(value = "update image")
+    public GeneralBean updateImage(@RequestParam MultipartFile multipartFile, @RequestParam Integer postImageId) {
+        //Upload file by FastDFS
+        String[] uploadPath = FastDFSUtils.upload(multipartFile);
+        //get the url
+        String url = FastDFSUtils.getTrackerUrl() + uploadPath[0] + "/" + uploadPath[1];
+
+        return postImageService.updateImage(url, postImageId);
+
+    }
+
 
     @PostMapping(value = "/uploadPostImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ApiOperation(value = "upload post imageFiles")
@@ -88,5 +113,7 @@ public class PostImageController {
         Long count = postImageService.count(queryWrapper);
         return GeneralBean.success(count);
     }
+
+
 
 }
