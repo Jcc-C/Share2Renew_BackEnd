@@ -178,18 +178,28 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      */
     @Override
     public GeneralBean forExchangeSellerGetPost(Integer userId) {
-        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("seller_id", userId).eq("validity", 1));
-        Integer exchangePostId = order.getExchangePostId();
-        Integer originPostId = order.getPostId();
 
-        Post exchangePost = postMapper.selectById(exchangePostId);
-        Post originPost = postMapper.selectById(originPostId);
+        List<Order> orderList = orderMapper.selectList(new QueryWrapper<Order>().eq("seller_id", userId).eq("validity", 1));
 
-        List<Post> exchangePostList = new ArrayList<>();
-        exchangePostList.add(exchangePost);
-        exchangePostList.add(originPost);
+        Map<String, List<Post>> result = new HashMap<String, List<Post>>();
 
-        return GeneralBean.success(exchangePostList);
+        for (Order order1 : orderList) {
+
+            List<Post> exchangePostList = new ArrayList<>();
+
+            Integer exchangePostId = order1.getExchangePostId();
+            Integer originPostId = order1.getPostId();
+
+            Post exchangePost = postMapper.selectById(exchangePostId);
+            Post originPost = postMapper.selectById(originPostId);
+
+            exchangePostList.add(exchangePost);
+            exchangePostList.add(originPost);
+
+            result.put(order1.getOrderId(), exchangePostList);
+        }
+
+        return GeneralBean.success(result);
     }
 
     /**
