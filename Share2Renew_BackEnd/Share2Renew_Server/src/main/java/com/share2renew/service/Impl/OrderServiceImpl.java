@@ -178,7 +178,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      */
     @Override
     public GeneralBean forExchangeSellerGetPost(Integer userId) {
-        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("seller_id", userId).eq("order_state", 1));
+        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("seller_id", userId).eq("validity", 1));
         Integer exchangePostId = order.getExchangePostId();
         Integer originPostId = order.getPostId();
 
