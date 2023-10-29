@@ -44,6 +44,9 @@ public class Order implements Serializable {
     @TableField("post_id")
     private Integer postId;
 
+    @TableField("exchange_post_id")
+    private Integer exchangePostId;
+
     @TableField("order_mobile")
     private String orderMobile;
 

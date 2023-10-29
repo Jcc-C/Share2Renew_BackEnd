@@ -36,6 +36,17 @@ public interface IOrderService extends IService<Order> {
     GeneralBean CancelOrder(int orderId);
 
 
+    /**
+     * for Exchange function Buyer Get two Posts
+     * @param userId
+     * @return
+     */
+    GeneralBean forExchangeBuyerGetPost(Integer userId);
 
-
+    /**
+     * for Exchange function Seller Get two Posts
+     * @param userId
+     * @return
+     */
+    GeneralBean forExchangeSellerGetPost(Integer userId);
 }

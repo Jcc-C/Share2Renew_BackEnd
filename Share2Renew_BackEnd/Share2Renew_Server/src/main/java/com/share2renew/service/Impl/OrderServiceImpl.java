@@ -1,5 +1,6 @@
 package com.share2renew.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.share2renew.mapper.PostMapper;
@@ -149,6 +150,47 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         return GeneralBean.success("Cancel order successful");
     }
 
+    /**
+     * for Exchange function Buyer Get two Posts
+     * @param userId
+     * @return
+     */
+    @Override
+    public GeneralBean forExchangeBuyerGetPost(Integer userId) {
+        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("buyer_id", userId).eq("order_state", 1));
+        Integer exchangePostId = order.getExchangePostId();
+        Integer originPostId = order.getPostId();
+
+        Post exchangePost = postMapper.selectById(exchangePostId);
+        Post originPost = postMapper.selectById(originPostId);
+
+        List<Post> exchangePostList = new ArrayList<>();
+        exchangePostList.add(exchangePost);
+        exchangePostList.add(originPost);
+
+        return GeneralBean.success(exchangePostList);
+    }
+
+    /**
+     * for Exchange function Seller Get two Posts
+     * @param userId
+     * @return
+     */
+    @Override
+    public GeneralBean forExchangeSellerGetPost(Integer userId) {
+        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("sell_id", userId).eq("order_state", 1));
+        Integer exchangePostId = order.getExchangePostId();
+        Integer originPostId = order.getPostId();
+
+        Post exchangePost = postMapper.selectById(exchangePostId);
+        Post originPost = postMapper.selectById(originPostId);
+
+        List<Post> exchangePostList = new ArrayList<>();
+        exchangePostList.add(exchangePost);
+        exchangePostList.add(originPost);
+
+        return GeneralBean.success(exchangePostList);
+    }
 
 
 }

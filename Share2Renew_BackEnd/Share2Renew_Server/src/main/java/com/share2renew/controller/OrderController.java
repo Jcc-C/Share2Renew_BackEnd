@@ -52,6 +52,23 @@ public class OrderController {
         return iOrderService.BuyerGetOrder(pageNo, pageSize, userId, title);
     }
 
+    @GetMapping("/forExchangeBuyerGetPost")
+    @ApiOperation(value = "forExchangeBuyerGetPost")
+    public GeneralBean forExchangeBuyerGetPost(@RequestParam Integer userId) {
+        return iOrderService.forExchangeBuyerGetPost(userId);
+    }
+
+    /**
+     * for Exchange function Seller Get two Posts
+     * @param userId
+     * @return
+     */
+    @GetMapping("forExchangeSellerGetPost")
+    @ApiOperation(value = "forExchangeSellerGetPost")
+    public GeneralBean forExchangeSellerGetPost(@RequestParam Integer userId) {
+        return iOrderService.forExchangeSellerGetPost(userId);
+    }
+
     @GetMapping("/sellerGetOrder")
     @ApiOperation("Seller get order by userId")
     public GeneralBean SellerGetOrder(@RequestParam(value = "pageNo") int pageNo,
