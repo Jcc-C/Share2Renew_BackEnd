@@ -251,6 +251,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             postOrderInfo.setCategoryId(post.getCategoryId());
             postOrderInfo.setBuyerId(order.getBuyerId());
             postOrderInfo.setSellerId(order.getSellerId());
+            postOrderInfo.setOrderId(order.getOrderId());
             postOrderInfo.setOrderMobile(order.getOrderMobile());
             postOrderInfo.setOrderAddress(order.getOrderAddress());
             postOrderInfo.setTrackingId(order.getTrackingId());
