@@ -93,7 +93,7 @@ public class PostController {
         return  GeneralBean.error("update post failed!");
     }
 
-    @PutMapping("/updatePostByPostPurpose")
+    @PutMapping("/getPostByPostPurpose")
     @ApiOperation(value = "get posts by post purpose")
     public GeneralBean GetPostByPostPurpose(@RequestParam(value = "pageNo") int pageNo,
                                             @RequestParam(value = "pageSize") int pageSize,
@@ -101,6 +101,13 @@ public class PostController {
         return postService.getPostByPostPurpose(pageNo, pageSize, postPurpose);
 
     }
+
+    @GetMapping("/getPostByPostPurposeAndUserId")
+    @ApiOperation(value = "get posts by post purpose and user id")
+    public GeneralBean getPostByPostPurposeAndUserId(@RequestParam Integer postPurpose, @RequestParam Integer userId) {
+        return postService.getPostByPostPurposeAndUserId(postPurpose, userId);
+    }
+
 
     @GetMapping("/getPostDetail")
     @ApiOperation("Get detail of the post")

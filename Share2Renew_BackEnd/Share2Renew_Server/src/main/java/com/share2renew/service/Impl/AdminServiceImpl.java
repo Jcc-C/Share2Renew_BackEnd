@@ -39,7 +39,6 @@ import java.util.Map;
 @Service
 public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements IAdminService {
 
-
     @Autowired
     private UserMapper userMapper;
     @Autowired

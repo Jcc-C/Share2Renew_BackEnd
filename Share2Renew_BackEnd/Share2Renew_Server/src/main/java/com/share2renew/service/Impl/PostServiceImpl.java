@@ -1,6 +1,7 @@
 package com.share2renew.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.share2renew.mapper.AdminMapper;
 import com.share2renew.mapper.UserMapper;
@@ -143,5 +144,23 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public List<Post> getAllPost() {
         return postMapper.getAllPost();
+    }
+
+    /**
+     * Get post by post purpose and user id
+     * @param postPurpose
+     * @param userId
+     * @return
+     */
+    @Override
+    public GeneralBean getPostByPostPurposeAndUserId(Integer postPurpose, Integer userId) {
+        QueryWrapper<Post> wapper = new QueryWrapper<>();
+        QueryWrapper<Post> postList = wapper.eq("post_purpose", postPurpose).eq("user_id", userId).eq("validity", 1);
+        List<Post> result = postMapper.selectList(postList);
+        if (result.size() > 1) {
+            return GeneralBean.success(postList);
+        } else {
+            return GeneralBean.error("No post has been found.");
+        }
     }
 }

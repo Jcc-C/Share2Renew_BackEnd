@@ -87,4 +87,12 @@ public interface IPostService extends IService<Post> {
      * @return
      */
     List<Post> getAllPost();
+
+    /**
+     * Get post by post purpose and user id
+     * @param postPurpose
+     * @param userId
+     * @return
+     */
+    GeneralBean getPostByPostPurposeAndUserId(Integer postPurpose, Integer userId);
 }

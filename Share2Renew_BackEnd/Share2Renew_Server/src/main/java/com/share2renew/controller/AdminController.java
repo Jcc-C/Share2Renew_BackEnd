@@ -45,14 +45,14 @@ public class AdminController {
     }
 
     @ApiOperation(value = "modify user validity")
-    @GetMapping("/modifyUserValidity")
+    @PostMapping("/modifyUserValidity")
     public void modifyUserValidity(@RequestParam("userId") int userId, @RequestParam("validity") boolean validity) {
 
         adminService.modifyUserValidity(userId, validity);
     }
 
     @ApiOperation(value = "modify post validity")
-    @GetMapping("/modifyPostValidity")
+    @PostMapping("/modifyPostValidity")
     public void modifyPostValidity(@RequestParam("postId") int postId, @RequestParam("validity") int validity) {
 
         adminService.modifyPostValidity(postId, validity);
@@ -60,7 +60,7 @@ public class AdminController {
     }
 
     @ApiOperation(value = "modify user's right to comment")
-    @GetMapping("/modifyUserCommentRight")
+    @PostMapping("/modifyUserCommentRight")
     public void modifyUserCommentRight(@RequestParam("userId") int userId, @RequestParam("commentRight") int commentRight) {
 
         adminService.modifyUserCommentRight(userId, commentRight);
