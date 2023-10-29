@@ -59,4 +59,11 @@ public interface IOrderService extends IService<Order> {
      * @return
      */
     GeneralBean createOrderForExchange(Integer buyerId, Integer postId, Integer exchangePostId, Integer addressId);
+
+    /**
+     * for User Get Sell Order
+     * @param userId
+     * @return
+     */
+    GeneralBean forUserGetSellOrder(Integer userId);
 }

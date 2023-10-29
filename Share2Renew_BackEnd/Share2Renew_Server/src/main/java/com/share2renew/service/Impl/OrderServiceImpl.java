@@ -194,6 +194,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     /**
      * Create a new order for exchange
+     * exchangePostId - 买家的postId / postId - 卖家的postId
      * @param buyerId
      * @param postId
      * @param exchangePostId
@@ -227,7 +228,22 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         postMapper.updateById(post);
         orderMapper.insert(order);
         return GeneralBean.success(order);
+    }
 
+    /**
+     * for User Get Sell Order
+     * @param userId
+     * @return
+     */
+    @Override
+    public GeneralBean forUserGetSellOrder(Integer userId) {
+        List<Order> orderList = orderMapper.selectList(new QueryWrapper<Order>().eq("seller_id", userId).eq("validity", 1));
+        List<Post> postList = new ArrayList<>();
+        for (Order order : orderList) {
+            Post post = postMapper.selectById(order.getPostId());
+            postList.add(post);
+        }
+        return GeneralBean.success(postList);
     }
 
 

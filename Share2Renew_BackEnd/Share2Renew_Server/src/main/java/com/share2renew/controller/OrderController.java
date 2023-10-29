@@ -41,6 +41,12 @@ public class OrderController {
         return iOrderService.createOrderForExchange(buyerId, postId, exchangePostId, addressId);
     }
 
+    @GetMapping("/forUserGetSellOrder")
+    @ApiOperation("for User Get Sell Order")
+    public GeneralBean forUserGetSellOrder(@RequestParam(value = "userId") Integer userId) {
+        return iOrderService.forUserGetSellOrder(userId);
+    }
+
     @PutMapping("/pay")
     @ApiOperation("Pay money")
     public GeneralBean PayOrder(@RequestParam(value = "orderId") String orderId){
