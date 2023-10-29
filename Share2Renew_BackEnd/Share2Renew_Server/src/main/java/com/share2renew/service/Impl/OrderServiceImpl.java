@@ -178,7 +178,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      */
     @Override
     public GeneralBean forExchangeSellerGetPost(Integer userId) {
-        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("sell_id", userId).eq("order_state", 1));
+        Order order = orderMapper.selectOne(new QueryWrapper<Order>().eq("seller_id", userId).eq("order_state", 1));
         Integer exchangePostId = order.getExchangePostId();
         Integer originPostId = order.getPostId();
 
@@ -190,6 +190,44 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         exchangePostList.add(originPost);
 
         return GeneralBean.success(exchangePostList);
+    }
+
+    /**
+     * Create a new order for exchange
+     * @param buyerId
+     * @param postId
+     * @param exchangePostId
+     * @param addressId
+     * @return
+     */
+    @Override
+    public GeneralBean createOrderForExchange(Integer buyerId, Integer postId, Integer exchangePostId, Integer addressId) {
+
+
+        Order order = new Order();
+        Post post = new Post();
+        SimpleDateFormat df = new SimpleDateFormat("yyddHHssSmm");
+        SimpleDateFormat df2 = new SimpleDateFormat("SmmssDS");
+
+        order.setOrderId(df2.format(new Date()));
+        order.setTrackingId(df.format(new Date()));
+
+        order.setPostId(postId);
+        order.setExchangePostId(exchangePostId);
+        order.setBuyerId(buyerId);
+        order.setSellerId(postMapper.selectById(postId).getUserId());
+
+        order.setOrderAddress(String.valueOf(shippingAddressMapper.selectById(addressId).getPostcode())+" "+shippingAddressMapper.selectById(addressId).getAddressDetail());
+        order.setOrderMobile(shippingAddressMapper.selectById(addressId).getAddressMobile());
+        order.setOrderState(0);//0 下单生成订单  1已经付款    2收货   3取消订单
+        order.setValidity(1);
+        order.setOrderDate(new Date());
+        post.setPostId(postId);
+        post.setValidity(2); //validity = "2" 商品已经出售 设置为不可购买
+        postMapper.updateById(post);
+        orderMapper.insert(order);
+        return GeneralBean.success(order);
+
     }
 
 

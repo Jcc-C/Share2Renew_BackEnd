@@ -31,6 +31,16 @@ public class OrderController {
         return iOrderService.CreateOrder(userId, postId, addressId);
     }
 
+    @PostMapping("/createOrderForExchange")
+    @ApiOperation("Create a new order for exchange")
+    public GeneralBean createOrderForExchange (@RequestParam(value = "buyerId") Integer buyerId,
+                                              @RequestParam(value = "postId") Integer postId,
+                                              @RequestParam(value = "exchangePostId") Integer exchangePostId,
+                                              @RequestParam(value = "addressId") Integer addressId){
+
+        return iOrderService.createOrderForExchange(buyerId, postId, exchangePostId, addressId);
+    }
+
     @PutMapping("/pay")
     @ApiOperation("Pay money")
     public GeneralBean PayOrder(@RequestParam(value = "orderId") String orderId){
