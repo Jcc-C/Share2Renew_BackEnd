@@ -238,10 +238,25 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Override
     public GeneralBean forUserGetSellOrder(Integer userId) {
         List<Order> orderList = orderMapper.selectList(new QueryWrapper<Order>().eq("seller_id", userId).eq("validity", 1));
-        List<Post> postList = new ArrayList<>();
+        List<PostOrderInfo> postList = new ArrayList<>();
+
         for (Order order : orderList) {
+            PostOrderInfo postOrderInfo = new PostOrderInfo();
             Post post = postMapper.selectById(order.getPostId());
-            postList.add(post);
+
+            postOrderInfo.setPostId(post.getPostId());
+            postOrderInfo.setPostTitle(post.getPostTitle());
+            postOrderInfo.setPostPurpose(post.getPostPurpose());
+            postOrderInfo.setPrice(post.getPrice());
+            postOrderInfo.setCategoryId(post.getCategoryId());
+            postOrderInfo.setBuyerId(order.getBuyerId());
+            postOrderInfo.setSellerId(order.getSellerId());
+            postOrderInfo.setOrderMobile(order.getOrderMobile());
+            postOrderInfo.setOrderAddress(order.getOrderAddress());
+            postOrderInfo.setTrackingId(order.getTrackingId());
+            postOrderInfo.setOrderState(order.getOrderState());
+
+            postList.add(postOrderInfo);
         }
         return GeneralBean.success(postList);
     }
