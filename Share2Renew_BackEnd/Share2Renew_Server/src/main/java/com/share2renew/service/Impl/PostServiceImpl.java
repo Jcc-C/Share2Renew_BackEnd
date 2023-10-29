@@ -155,10 +155,10 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
     @Override
     public GeneralBean getPostByPostPurposeAndUserId(Integer postPurpose, Integer userId) {
         QueryWrapper<Post> wapper = new QueryWrapper<>();
-        QueryWrapper<Post> postList = wapper.eq("post_purpose", postPurpose).eq("user_id", userId).eq("validity", 1);
+        QueryWrapper<Post> postList = wapper.eq("post_purpose", postPurpose).eq("user_id", userId).ne("validity", 0);
         List<Post> result = postMapper.selectList(postList);
-        if (result.size() > 1) {
-            return GeneralBean.success(postList);
+        if (result.size() >= 1) {
+            return GeneralBean.success(result);
         } else {
             return GeneralBean.error("No post has been found.");
         }
